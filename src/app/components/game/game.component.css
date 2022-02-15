@@ -1,0 +1,14 @@
+#zone {
+  width: 70em;
+  height: 50em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  text-align: center;
+  padding: 8px 12px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffb224;
+  opacity: 0.5;
+  margin-top: -25vh;
+
+}
