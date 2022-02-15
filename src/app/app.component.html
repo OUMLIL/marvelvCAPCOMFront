@@ -5,7 +5,7 @@
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
 
-    <a aria-label="Sound Controller" title="Play/Pause Sound" (click)="playSound(pikaAudio,0)">
+    <a aria-label="Sound Controller" title="Play/Pause Sound" routerLink="/" (click)="soundManagement.playSound(soundManagement.pikaAudio,0)">
       <img
         width="40"
         alt="Pikachu Logo"
@@ -17,7 +17,7 @@
 
     <div class="spacer"></div>
 
-    <a aria-label="Sound Controller" title="Play/Pause Sound" (click)="playSound(mainAudio,mainSoundStatus)">
+    <a aria-label="Sound Controller" title="Play/Pause Sound" (click)="soundManagement.playSound(soundManagement.mainAudio,soundManagement.mainSoundStatus)">
       <div class="bouton" onclick="this.classList.toggle('active')">
         <div class="fond" x="0" y="0" width="100" height="100"></div>
         <div class="icon" width="100" height="100">
@@ -32,15 +32,13 @@
 
   <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
     <div class="content" >
-      <router-outlet></router-outlet>
+
       <div *ngIf="hasRoute('/')" class="card-container">
-        <a class="card" routerLink="/game" >
-          <span>Play</span>
-        </a>
+          <span class="card" routerLink="/game">Enter</span>
       </div>
     </div>
   </div>
-
+  <router-outlet></router-outlet>
 </div>
 
   <div class="container">
