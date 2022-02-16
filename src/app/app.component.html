@@ -1,5 +1,3 @@
-
-
 <div class="bg">
 
   <!-- Toolbar -->
@@ -17,22 +15,28 @@
 
     <div class="spacer"></div>
 
+    <a aria-label="Sound Controller" title="Play/Pause Sound" routerLink="/figures">
+      <img
+        width="40"
+        alt="Pikachu Logo"
+        src="https://qph.fs.quoracdn.net/main-qimg-7f717af630a3318cdce57f5609ca9e02"
+      />
+    </a>
+
     <a aria-label="Sound Controller" title="Play/Pause Sound" (click)="soundManagement.playSound(soundManagement.mainAudio,soundManagement.mainSoundStatus)">
       <div class="bouton" onclick="this.classList.toggle('active')">
-        <div class="fond" x="0" y="0" width="100" height="100"></div>
-        <div class="icon" width="100" height="100">
-          <div class="button-part left" x="0" y="0" width="100" height="100" fill="#fff"></div>
-          <div class="button-part right" x="0" y="0" width="100" height="100" fill="#fff"></div>
+        <div class="fond" ></div>
+        <div class="icon" >
+          <div class="button-part left"></div>
+          <div class="button-part right"></div>
         </div>
         <div class="pointer"></div>
       </div>
     </a>
   </div>
 
-
-  <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+  <div class="mask d-flex justify-content-center">
     <div class="content" >
-
       <div *ngIf="hasRoute('/')" class="card-container">
           <span class="card" routerLink="/game">Enter</span>
       </div>
