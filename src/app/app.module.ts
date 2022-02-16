@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './components/game/game.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { FiguresComponent } from './components/figures/figures.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
+    FiguresComponent,
   ],
     imports: [
         BrowserModule,
