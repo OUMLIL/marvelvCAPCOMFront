@@ -7,12 +7,14 @@ import { GameComponent } from './components/game/game.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FiguresComponent } from './components/figures/figures.component';
+import { ArenasComponent } from './components/arenas/arenas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameComponent,
     FiguresComponent,
+    ArenasComponent,
   ],
     imports: [
         BrowserModule,

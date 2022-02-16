@@ -1,0 +1,25 @@
+<div class="zone">
+  <a class="btn-flip-left" data-back="Previous" (click)="decrementCheck()" data-front="<<<<"></a>
+  <div class='caroussel_diapo'>
+    <input [checked]=check[0] id="carou_un" name="rotation" type="radio">
+    <label for="carou_un"></label>
+    <input [checked]=check[1] id="carou_deux" name="rotation" type="radio">
+    <label for="carou_deux"></label>
+    <input [checked]=check[2] id="carou_trois" name="rotation" type="radio">
+    <label for="carou_trois"></label>
+    <input [checked]=check[3] id="carou_quatre" name="rotation" type="radio">
+    <label for="carou_quatre"></label>
+    <input [checked]=check[4] id="carou_cinq" name="rotation" type="radio">
+    <label for="carou_cinq"></label>
+    <div class="contenu_carou">
+      <div class="caroussel">
+        <img src="../../../assets/Resources/1.png" alt>
+        <img src="../../../assets/Resources/2.png" alt>
+        <img src="../../../assets/Resources/3.png" alt>
+        <img src="../../../assets/Resources/4.png" alt>
+        <img src="../../../assets/Resources/5.png" alt>
+      </div>
+    </div>
+  </div>
+  <a class="btn-flip-right" data-back="Next" (click)="incrementCheck()" data-front=">>>>"></a>
+</div>
