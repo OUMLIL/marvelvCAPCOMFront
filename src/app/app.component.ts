@@ -9,7 +9,7 @@ import {SoundManagement} from "./sound-management";
 })
 
 export class AppComponent {
-  static title = 'Marvel VS CAPCOM';
+  static title = 'Pokemon STADIUM';
   title : string | undefined;
   soundManagement = new SoundManagement();
 
