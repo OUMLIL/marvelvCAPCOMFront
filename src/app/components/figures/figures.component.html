@@ -1,5 +1,5 @@
-<div id="cards">
-  <div class="cardprop1">
+<div *ngIf="!allFiguresSelected" id="cards">
+  <div class="cardprop">
     <figure class="card card--normal">
       <div class="card__image-container">
         <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/575ec21b-072c-4dc2-9964-69874e4837a3/d2ljbl1-968659c4-a4bf-40ba-b791-80cfaaeb1bcc.png/v1/fill/w_804,h_994,strp/eevee_redraw_by_kirkbutler_d2ljbl1-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAwMCIsInBhdGgiOiJcL2ZcLzU3NWVjMjFiLTA3MmMtNGRjMi05OTY0LTY5ODc0ZTQ4MzdhM1wvZDJsamJsMS05Njg2NTljNC1hNGJmLTQwYmEtYjc5MS04MGNmYWFlYjFiY2MucG5nIiwid2lkdGgiOiI8PTgwOSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.jWgetIt1sRiA1wEBXZvQSb6mAhrsfoJK2_T74mpSSq4" alt="Eevee" class="card__image">
@@ -45,10 +45,6 @@
           <h4 class="card__ability">
             <span class="card__label">Ability</span>
             Run Away
-          </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Anticipation
           </h4>
         </div>
       </figcaption>
@@ -100,10 +96,6 @@
             <span class="card__label">Ability</span>
             Absorb
           </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Hydration
-          </h4>
         </div>
       </figcaption>
     </figure>
@@ -154,15 +146,10 @@
             <span class="card__label">Ability</span>
             Volt Absorb
           </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Quick Feet
-          </h4>
         </div>
       </figcaption>
     </figure>
-  </div>
-<div class="cardprop2">
+
     <figure class="card card--fire">
       <div class="card__image-container">
         <img src="http://img2.wikia.nocookie.net/__cb20140426202519/helixpedia/images/1/17/Flareon.png" alt="Flareon" class="card__image">
@@ -208,10 +195,6 @@
           <h4 class="card__ability">
             <span class="card__label">Ability</span>
             Flash Fire
-          </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Guts
           </h4>
         </div>
       </figcaption>
@@ -263,10 +246,6 @@
             <span class="card__label">Ability</span>
             Synchronize
           </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Magic Bounce
-          </h4>
         </div>
       </figcaption>
     </figure>
@@ -316,10 +295,6 @@
           <h4 class="card__ability">
             <span class="card__label">Ability</span>
             Synchronize
-          </h4>
-          <h4 class="card__ability">
-            <span class="card__label">Hidden Ability</span>
-            Inner Focus
           </h4>
         </div>
       </figcaption>
@@ -376,12 +351,15 @@
           <span class="card__label">Ability</span>
           {{ability1}}
         </h4>
-        <h4 class="card__ability">
-          <span class="card__label">Hidden Ability</span>
-          {{ability2}}
-        </h4>
       </div>
     </figcaption>
   </figure>
 </script>
 
+<div class="mask d-flex justify-content-center" *ngIf="allFiguresSelected">
+  <div class="content" >
+    <div class="card-container">
+      <span class="card-to-arena" routerLink="/arenas">Choose Arena</span>
+    </div>
+  </div>
+</div>

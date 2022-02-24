@@ -12,8 +12,8 @@ export class ArenasComponent implements OnInit {
     this.check[this.numberChecked] = true;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
   incrementCheck(){
     this.check[this.numberChecked] = false;
     this.numberChecked = (this.numberChecked + 1)%5;

@@ -5,11 +5,13 @@
   margin-right: 10vh;
 }
 
-.cardprop1{
+.cardprop{
   margin: auto;
   display: flex;
   justify-content: center;
+  max-width: 60vw;
 }
+
 .cardprop2{
   margin: auto;
   display: flex;
@@ -31,12 +33,13 @@ h1, h2, h3, h4, h5 {
   padding: 1em;
   border-radius: 15px;
   background: #ddd;
-  text-align: left;
+  text-align: center;
   box-shadow: 0 5px 20px -10px #111111;
   position: relative;
   transition: 0.4s;
   align-items: center;
   margin: 10px 5%;
+  min-width: 21vh;
 }
 
 .card__caption {
@@ -188,4 +191,53 @@ h1, h2, h3, h4, h5 {
   box-shadow: 0px 13px 30px -15px #000000;
   transform: translateY(-10px);
   cursor: pointer;
+}
+
+.content {
+
+  display: flex;
+  margin-top: 10vh;
+  padding: 0 16px;
+  max-height: 960px;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-container {
+  display: flow;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 25vh;
+}
+
+.card-to-arena {
+  all: unset;
+  border-radius: 4px;
+  background-color: #fafafa;
+  opacity: 0.5;
+  height: 80px;
+  width: 400px;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 60px;
+  font-size: 60px;
+}
+
+.card-container .card-to-arena:not(.highlight-card) {
+  cursor: pointer;
+}
+
+.card-container .card-to-arena:hover {
+  transform: scale(1.3);
+  background-color: #ffb224;
+  border-radius: 300px;
+  color: white;
+  opacity: 1;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+
 }

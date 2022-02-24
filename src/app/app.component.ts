@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.title = AppComponent.title;
     this.soundManagement.mainSound(this.soundManagement.mainAudio);
-    this.soundManagement.playSound(this.soundManagement.mainAudio,0);
+    this.soundManagement.playSound(this.soundManagement.mainAudio,1);
     this.soundManagement.pikaSound(this.soundManagement.pikaAudio);
   }
 
