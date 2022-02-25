@@ -9,14 +9,24 @@ import {IPlayer} from "./iplayer.model";
 export class PlayerService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  private urlPlayer = '';
+  private urlPlayer = 'https://localhost:7087/api/User/users';
 
   constructor(
-    //private http:HttpClient
+    private http: HttpClient
      ) {}
 
-  addPlayer(playerName: string){
-    console.log("player "+ playerName + " added");
+  addPlayer(player: IPlayer){
+    console.log("Callind this");
+    const url = `${this.urlPlayer}/add`;
+    console.log(url);
+    return this.http.post<IPlayer>(url, player, this.httpOptions);
+    //console.log("player "+ playerName + " added");
+  }
+
+  private url2 = "https://localhost:7087/api/User/users"
+  getUsers() {
+    console.log("GET CALL !!");
+    return this.http.get<IPlayer[]>(this.url2);
   }
 /*
   addPlayer(player: unknown): Observable<IPlayer> {

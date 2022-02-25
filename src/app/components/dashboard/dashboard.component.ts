@@ -14,24 +14,36 @@ import {HttpClient} from "@angular/common/http";
 export class DashboardComponent implements OnInit {
   alert= "";
   title = AppComponent.title;
-  player: IPlayer | undefined;
+  players: IPlayer[] = [];
   player1DefaultName = "player 1";
   player2DefaultName = "player 2";
 
   constructor(
     private playerService: PlayerService,
     private gameService: GameService,
-    //private http: HttpClient
   ) {}
 
   startGame(player1Name: string, player2Name: string): void {
     player1Name = player1Name.trim();
     player2Name = player2Name.trim();
-    if (player1Name && player2Name) {
-      this.playerService.addPlayer(player1Name);
-      this.playerService.addPlayer(player2Name);
-      console.log("Game Started");
-    }
+    // if (player1Name && player2Name) {
+    //   this.players[0] = {
+    //     Id: 0,
+    //     username: player1Name
+    //   }
+    //   this.players[1] = {
+    //     Id: 0,
+    //     username: player2Name
+    //   }
+    //   console.log(this.playerService.addPlayer(this.players[0]));
+    //   console.log(this.playerService.addPlayer(this.players[1]));
+    //   console.log("Game Started");
+    this.playerService.getUsers().subscribe(
+      (players) => {
+        console.log(players)
+      }
+    );
+    //}
   }
   /*
   startGame(playerName: string): void {
@@ -87,4 +99,3 @@ export class DashboardComponent implements OnInit {
   }
 
 }
-
