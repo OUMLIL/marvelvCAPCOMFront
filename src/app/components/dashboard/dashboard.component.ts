@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
-import {IPlayer} from "../../iplayer.model";
-import {PlayerService} from "../../player.service";
-import {GameService} from "../../game.service";
+import {IPlayer} from "../../models/iplayer.model";
+import {PlayerService} from "../../services/player.service";
+import {GameService} from "../../services/game.service";
 import {HttpClient} from "@angular/common/http";
 
 @Component({

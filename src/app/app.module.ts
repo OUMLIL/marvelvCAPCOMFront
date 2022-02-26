@@ -10,8 +10,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { FiguresComponent } from './components/figures/figures.component';
 import { ArenasComponent } from './components/arenas/arenas.component';
 import { GameComponent } from './components/game/game.component';
-import { GameService } from './game.service';
-import { PlayerService } from './player.service';
+import { GameService } from './services/game.service';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [
