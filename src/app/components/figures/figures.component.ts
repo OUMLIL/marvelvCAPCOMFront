@@ -1,19 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { ICharacter } from 'src/app/models/icharacter.model';
+import { CharacterService } from 'src/app/services/character.service';
+import { AbilityService } from 'src/app/services/ability.service';
+import { Icu } from '@angular/compiler/src/i18n/i18n_ast';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-figures',
   templateUrl: './figures.component.html',
-  styleUrls: ['./figures.component.css']
+  styleUrls: ['./figures.component.css'],
 })
+
 export class FiguresComponent implements OnInit {
 
   allFiguresSelected = false;
+  characters:  any;
+  private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
+  
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private characterService: CharacterService,
+    private abilityService: AbilityService
+  ) { 
   }
 
+  ngOnInit(): void {
+    this.characterService.getCharacters().subscribe(
+      
+      (characs) => {
+        let i = 0;
+        this.characters = characs
+        this.characters.map((element: ICharacter) => {
+          element["cardType"] = this.cardTypes[i++]
+        })
+        console.log(this.characters);
+      } 
+    )
+  }
+  
 }
 // var source   = document.getElementById("card-template").innerHTML;
 // var template = Handlebars.compile(source);

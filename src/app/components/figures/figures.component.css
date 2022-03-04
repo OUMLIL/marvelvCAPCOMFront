@@ -12,6 +12,10 @@
   max-width: 60vw;
 }
 
+.card-C {
+  justify-content: space-around;
+}
+
 .cardprop2{
   margin: auto;
   display: flex;

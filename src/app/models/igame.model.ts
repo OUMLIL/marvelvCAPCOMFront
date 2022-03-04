@@ -1,18 +1,18 @@
-import { IPlayer } from './iplayer.model';
+import {IPlayer} from './iplayer.model';
 
-export interface IGame {
-    Id: Number;
-    FirstPid: IPlayer;
-    SecondPid: IPlayer;
+export class IGame {
+    Id: Number = 0;
+    FirstPid: IPlayer = new IPlayer();
+    SecondPid: IPlayer = new IPlayer();
 
-    P1char1: Number;
-    P1char2: Number;
-    P1char3: Number;
+    P1char1: Number = 0;
+    P1char2: Number = 0;
+    P1char3: Number = 0;
 
-    P2char1: Number;
-    P2char2: Number;
-    P2char3: Number;
+    P2char1: Number = 0;
+    P2char2: Number = 0;
+    P2char3: Number = 0;
 
-    Winner: IPlayer;
-    Arena: Number;
+    Winner: IPlayer  = new IPlayer();
+    Arena: Number = 0;
 }

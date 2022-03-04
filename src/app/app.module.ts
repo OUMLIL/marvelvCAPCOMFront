@@ -12,6 +12,8 @@ import { ArenasComponent } from './components/arenas/arenas.component';
 import { GameComponent } from './components/game/game.component';
 import { GameService } from './services/game.service';
 import { PlayerService } from './services/player.service';
+import { CharacterService } from './services/character.service';
+import { AbilityService } from './services/ability.service';
 
 @NgModule({
   declarations: [
