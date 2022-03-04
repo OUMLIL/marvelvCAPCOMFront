@@ -6,17 +6,25 @@ import {IPlayer} from "./iplayer.model";
 @Injectable({
   providedIn: 'root'
 })
+
 export class PlayerService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  private urlPlayer = '';
+  private urlPlayer = 'https://localhost:7087/';
 
   constructor(
-    //private http:HttpClient
+    private http:HttpClient
      ) {}
-
+  /*
   addPlayer(playerName: string){
-    console.log("player "+ playerName + " added");
+    console.log("player " + playerName + " added");
+    this.http.post<IPlayer>(this.url +, { id: 37, username: "UserTestAngular" });
+  } */
+
+  addPlayer(playerName : string) : Observable<IPlayer> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post<IPlayer>(this.urlPlayer + 'api/User/users/add',
+      {id : '37' , username : playerName}, httpOptions);
   }
 /*
   addPlayer(player: unknown): Observable<IPlayer> {

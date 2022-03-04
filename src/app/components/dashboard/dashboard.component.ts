@@ -3,7 +3,8 @@ import { AppComponent } from '../../app.component';
 import {IPlayer} from "../../iplayer.model";
 import {PlayerService} from "../../player.service";
 import {GameService} from "../../game.service";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-game',
