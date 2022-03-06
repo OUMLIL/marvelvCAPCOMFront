@@ -16,19 +16,32 @@ export class PlayerService {
      ) {}
 
   addPlayer(player: IPlayer){
-    console.log("Calling this");
-    console.log(player);
+    console.log("post");
     return this.http.post<IPlayer>(this.urlPlayer, player, this.httpOptions);
+  }
+
+  addPlayers(players : IPlayer[]){
+    console.log("multiple post");
+    return this.http.post<IPlayer>(this.urlPlayer, players , this.httpOptions);
   }
 
 
   getPlayers() {
-    console.log("GET CALL !!");
+    console.log("get all");
     return this.http.get<IPlayer[]>(this.urlPlayer);
   }
 
+  getGamePlayers(username1 : string, username2 : string){
+    console.log("2 players");
+    const url = `${this.urlPlayer}/user1/${username1}/user2/${username2}`;
+    console.log(url);
+    return this.http.get<IPlayer>(url);
+  }
+
+
+
   getPlayerByUsername(username : string){
-    console.log("by username ;)");
+    console.log("get by name");
     const url = `${this.urlPlayer}/byUsername/${username}`;
     console.log(url);
     return this.http.get<IPlayer>(url);

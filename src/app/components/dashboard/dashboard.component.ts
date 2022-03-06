@@ -4,7 +4,8 @@ import {IPlayer} from "../../models/iplayer.model";
 import {PlayerService} from "../../services/player.service";
 import {GameService} from "../../services/game.service";
 import {HttpClient} from "@angular/common/http";
-
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -15,139 +16,62 @@ import {HttpClient} from "@angular/common/http";
 export class DashboardComponent implements OnInit {
   alert= "";
   title = AppComponent.title;
-  players: IPlayer[] = [];
+  players: any;
   player1DefaultName = "player 1";
   player2DefaultName = "player 2";
+  allReady : boolean = false;
 
   constructor(
     private playerService: PlayerService,
     private gameService: GameService,
-  ) {}
-
-/*
-  FetchPlayer(playerName: string,  index :  number): void{
-    playerName = playerName.trim();
-    let player = this.playerService.getPlayerByUsername(playerName);
-    if (playerName && player ){
-       player.subscribe(player => {
-        this.players[index] = {
-          id : (player as any).id,
-          username : (player as any).username
-       }
-      });
-      console.log(this.players)
-    }
+    private sharedDataService: SharedDataServiceService,
+  ) {
+    this.players = new Array<IPlayer>();
   }
-*/
 
-  startGame(player1Name: string, player2Name: string): void {
-    player1Name = player1Name.trim();
-    player2Name = player2Name.trim();
-    this.playerService.getPlayerByUsername(player1Name).subscribe({
-        next: (resp) => {
-          if(resp != null){
-            this.players[0] = resp
-            console.log(this.players[0])
 
-          }
-          else{
-            this.players[0] = {
-              username : player1Name,
-            }
-            this.playerService.addPlayer(this.players[0]).subscribe({
-              next : (data) =>{
-                this.players[0] = {
-                  username : player1Name,
-                  id : data as any
-                }
-                console.log(this.players[0])
-              }
-
+  startGame(player0Name: string, player1Name: string): void {
+    player0Name = player0Name.trim()
+    player1Name = player1Name.trim()
+    var indexes = new Array<number>();
+    var tempoPlayers = new Array<IPlayer>();
+    const names: string[] = [player0Name, player1Name];
+    this.playerService.getGamePlayers(player0Name, player1Name)
+    .subscribe({
+      next : (resp) =>{
+        this.players = resp;
+      },
+      complete : () => {
+        for (let index = 0; index < 2; index++) {
+          if(this.players[index] == null)
+          {
+            indexes.push(index);
+            tempoPlayers.push({
+              username: names[index],
             });
           }
-        },
-        error: (e) =>{
-          console.log("error");
-        },
-      });
+        }
 
-
-      this.playerService.getPlayerByUsername(player2Name).subscribe({
-        next: (resp) => {
-          if(resp != null){
-            this.players[1] = resp
-            console.log(this.players[1])
-          }
-          else{
-            this.players[1] = {
-              username : player2Name,
-            }
-            this.playerService.addPlayer(this.players[1]).subscribe({
-              next : (data) =>{
-                this.players[1] = {
-                  username : player2Name,
-                  id : data as any
-                }
-                console.log(this.players[1])
+        if(tempoPlayers.length > 0){
+          this.playerService.addPlayers(tempoPlayers).subscribe({
+            next : (resp) => {
+              if(tempoPlayers.length == 2){
+                this.players = resp;
+                console.log(resp)
+                this.sharedDataService.updatePlayers(this.players)
               }
-            });
-          }
-        },
-        error: (e) =>{
-          console.log("error");
-        }
-      });
-  }
-
-
-  /*
-  startGame(playerName: string): void {
-    playerName = playerName.trim();
-    if (playerName) {
-      this.playerService.addPlayer({ Nom: playerName.trim() }).subscribe(
-        objet => {
-          location.replace("/window/" + playerName.trim());
-        },
-        error => {
-          switch (error.status) {
-            case 400:
-              this.alert = "Ce pseudo est déjà utilisé";
-
-              break;
-            default:
-              this.alert = "Impossible de charger la partie";
-          }
-        }
-      );
-    }
-   */
-
-
-  continueGame(player1Name: string, player2Name: string){
-    if (player1Name && player2Name) {
-      this.gameService.continueGame(player1Name.trim(),player2Name.trim());
-      console.log("Game Continued");
-    }
-  }
-  /*
-  continueGame(joueurNom: string): void {
-      if (joueurNom) {
-              this.gameService.continueGame(joueurNom.trim()).subscribe((game) => {
-            location.replace("/window/" + game.joueur.Nom);
-          },
-          error => {
-            switch (error.status) {
-              case 404:
-                this.alert = "Aucune partie pour ce pseudo";
-                break;
-              default:
-                this.alert = "Impossible de reprendre la partie";
+              else{
+                this.players[indexes[0]] = resp[0];
+              }
             }
-          }
-        );
+          });
+        }
+        this.allReady = true;
+        this.sharedDataService.updatePlayers(this.players)
+        console.log(this.players)
       }
-    }
-   */
+    });
+  }
 
 
   ngOnInit(): void {

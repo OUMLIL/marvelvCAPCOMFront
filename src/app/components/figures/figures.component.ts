@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IPlayer } from 'src/app/models/iplayer.model';
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
+
 
 @Component({
   selector: 'app-figures',
@@ -8,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class FiguresComponent implements OnInit {
 
   allFiguresSelected = false;
-
-  constructor() { }
+  players : IPlayer[] = []
+  constructor( private sharedDataService: SharedDataServiceService,) { }
 
   ngOnInit(): void {
+    this.sharedDataService.currentPlayers.subscribe(data => this.players = data)
+    console.log(this.players)
   }
 
 }
