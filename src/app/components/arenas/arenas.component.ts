@@ -25,6 +25,7 @@ export class ArenasComponent implements OnInit {
   getCharacters() {
     console.log(this.characters)
   }
+
   incrementCheck(){
     this.check[this.numberChecked] = false;
     this.numberChecked = (this.numberChecked + 1)%5;
