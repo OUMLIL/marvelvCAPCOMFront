@@ -5,21 +5,25 @@
   margin-right: 10vh;
 }
 
+.player{
+  background-color: #d9a867;
+  margin: -2vh auto 1vh;
+  opacity: 0.7;
+  padding: 15px;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+}
 .cardprop{
   margin: auto;
   display: flex;
-  justify-content: center;
-  max-width: 60vw;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .card-C {
   justify-content: space-around;
-}
-
-.cardprop2{
-  margin: auto;
-  display: flex;
-  justify-content: center;
 }
 
 img {
@@ -33,7 +37,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .card {
-  width: 300px;
+  width: max-content;
   padding: 1em;
   border-radius: 15px;
   background: #ddd;
@@ -43,7 +47,7 @@ h1, h2, h3, h4, h5 {
   transition: 0.4s;
   align-items: center;
   margin: 10px 5%;
-  min-width: 21vh;
+
 }
 
 .card__caption {
@@ -220,8 +224,6 @@ h1, h2, h3, h4, h5 {
   border-radius: 4px;
   background-color: #fafafa;
   opacity: 0.5;
-  height: 80px;
-  width: 400px;
   padding: 25px;
   display: flex;
   flex-direction: row;

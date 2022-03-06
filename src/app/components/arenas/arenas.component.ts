@@ -27,4 +27,8 @@ export class ArenasComponent implements OnInit {
     this.check[this.numberChecked] = true;
     console.log(this.numberChecked);
   }
+
+  pickArena(){
+    console.log("picked arena ", this.numberChecked);
+  }
 }

@@ -13,20 +13,22 @@ import { Observable } from 'rxjs';
 
 export class FiguresComponent implements OnInit {
 
-  allFiguresSelected = false;
+  figuresSelected = 0;
   characters:  any;
+  charactersPlayer1: any;
+  charactersPlayer2: any;
+  playerNum = this.figuresSelected % 2 +1;
   private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
-  
 
   constructor(
     private characterService: CharacterService,
-    private abilityService: AbilityService
-  ) { 
+    private abilityService: AbilityService,
+  ) {
   }
 
   ngOnInit(): void {
     this.characterService.getCharacters().subscribe(
-      
+
       (characs) => {
         let i = 0;
         this.characters = characs
@@ -34,11 +36,27 @@ export class FiguresComponent implements OnInit {
           element["cardType"] = this.cardTypes[i++]
         })
         console.log(this.characters);
-      } 
+      }
     )
+    this.charactersPlayer1 = Array<ICharacter>();
+    this.charactersPlayer2 = Array<ICharacter>();
   }
-  
+
+  chooseCharacter(data: any){
+    this.figuresSelected++;
+    this.playerNum = this.figuresSelected % 2 +1;
+    this.characters.splice(this.characters.indexOf(data),1);
+    if(this.playerNum == 1)
+      this.charactersPlayer1.push(data);
+    else
+      this.charactersPlayer2.push(data);
+    console.log(data.charName + " / player " + this.playerNum);
+    console.log(this.characters);
+    console.log(this.charactersPlayer1, this.charactersPlayer2)
+  }
 }
+
+
 // var source   = document.getElementById("card-template").innerHTML;
 // var template = Handlebars.compile(source);
 

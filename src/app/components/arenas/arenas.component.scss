@@ -178,6 +178,9 @@
   border-radius: 20%;
   backface-visibility:hidden;
   transition:1s;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 .caroussel img{filter:blur(2px);opacity:.8}
@@ -221,5 +224,3 @@
 .caroussel_diapo #carou_trois:checked ~ .contenu_carou .caroussel img:nth-child(3){transform:rotateY(90deg) translateZ(540px) scale(1);opacity:1}
 .caroussel_diapo #carou_quatre:checked ~ .contenu_carou .caroussel img:nth-child(4){transform:rotateY(135deg) translateZ(540px) scale(1);opacity:1}
 .caroussel_diapo #carou_cinq:checked ~ .contenu_carou .caroussel img:nth-child(5){transform:rotateY(180deg) translateZ(540px) scale(1);opacity:1}
-
-
