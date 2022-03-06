@@ -16,26 +16,36 @@ export class PlayerService {
      ) {}
 
   addPlayer(player: IPlayer){
-    console.log("Callind this");
-    const url = `${this.urlPlayer}/add`;
-    console.log(url);
-    return this.http.post<IPlayer>(url, player, this.httpOptions);
-    //console.log("player "+ playerName + " added");
+    console.log("Calling this");
+    console.log(player);
+    return this.http.post<IPlayer>(this.urlPlayer, player, this.httpOptions);
   }
 
-  private url2 = "https://localhost:7087/api/User/users"
-  getUsers() {
+
+  getPlayers() {
     console.log("GET CALL !!");
-    return this.http.get<IPlayer[]>(this.url2);
+    return this.http.get<IPlayer[]>(this.urlPlayer);
   }
-/*
+
+  getPlayerByUsername(username : string){
+    console.log("by username ;)");
+    const url = `${this.urlPlayer}/byUsername/${username}`;
+    console.log(url);
+    return this.http.get<IPlayer>(url);
+  }
+
+  
+
+
+  /*
   addPlayer(player: unknown): Observable<IPlayer> {
     return this.http.post<IPlayer>('', player, this.httpOptions);
   }
-*/
 
 
-/*
+
+
+
 getJoueurs(): Observable<IJoueur[]> {
 		return this.http.get<IJoueur[]>(this.urljoueur);
 	}

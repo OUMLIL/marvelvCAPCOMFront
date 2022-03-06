@@ -1,5 +1,5 @@
 export interface IPlayer {
-  Id: number,
+  id?: number,
   username: string
   //OpponentId: number
 }
