@@ -4,7 +4,6 @@
   <input #playerName1 [defaultValue]="player1DefaultName" class="in">
   <input #playerName2 [defaultValue]="player2DefaultName" class="in">
   <button class="btn btn-success" (click)="startGame(playerName1.value,playerName2.value)" routerLink="/figures">Let's go !</button>
-  <button class="btn btn-info" (click)="continueGame(playerName1.value,playerName2.value)" routerLink="/game">Reprendre la partie</button>
   <video [muted]="'muted'" autoplay loop>
   <source src="../../../assets/Resources/PikaAnim.mp4" type="video/mp4">
   </video>

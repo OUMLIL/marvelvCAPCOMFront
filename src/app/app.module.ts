@@ -14,6 +14,7 @@ import { GameService } from './services/game.service';
 import { PlayerService } from './services/player.service';
 import { CharacterService } from './services/character.service';
 import { AbilityService } from './services/ability.service';
+import { SharedDataServiceService } from './services/shared-data-service.service';
 
 @NgModule({
   declarations: [

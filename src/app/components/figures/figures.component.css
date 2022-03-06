@@ -245,3 +245,23 @@ h1, h2, h3, h4, h5 {
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 
 }
+@keyframes rotation {
+  to {
+    transform: rotate(360deg) translateX(-50%) translateY(-50%);
+  }
+}
+
+#player_name {
+  position: absolute;
+  z-index: 2;
+  font-size: 4em;
+  letter-spacing: 15px;
+  color:white;
+  background-color: #1976d2;
+  opacity: 0.8;
+  border-radius: 40px;
+  width: 1500px;
+  top: 70%;
+  left: 7%;
+  text-align: center;
+}

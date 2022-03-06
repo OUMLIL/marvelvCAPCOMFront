@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { ICharacter } from '../models/icharacter.model';
+import { IPlayer } from '../models/iplayer.model';
+import { FiguresComponent } from '../components/figures/figures.component';
+//import dyal les info [id _ joueurs, arene, characters] to build round object
+
+//start game 
+//attacking routes
+//game end route
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +18,7 @@ export class GameService {
   private gameUrl = '';
 
   constructor(
-    //private http: HttpClient
+    private http: HttpClient
   ) { }
 
   continueGame(pseudo1: string, pseudo2: string) {

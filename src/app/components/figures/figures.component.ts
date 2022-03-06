@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ICharacter } from 'src/app/models/icharacter.model';
 import { CharacterService } from 'src/app/services/character.service';
 import { AbilityService } from 'src/app/services/ability.service';
-import { Icu } from '@angular/compiler/src/i18n/i18n_ast';
-import { Observable } from 'rxjs';
-
+import { Observable, shareReplay } from 'rxjs';
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 @Component({
   selector: 'app-figures',
   templateUrl: './figures.component.html',
@@ -16,31 +15,64 @@ export class FiguresComponent implements OnInit {
   allFiguresSelected = false;
   characters:  any;
   private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
-  
+  private data: any;
+  private totalCharactersChoosed: number = 0;
+  choosedCharacters: ICharacter[] = new Array<ICharacter>(3);
+  player1Name: string = "NADALOUV"
+  player2Name: string = "STAIFOUTINE"
+  currentPlayer: string = ""
 
   constructor(
     private characterService: CharacterService,
-    private abilityService: AbilityService
+    private abilityService: AbilityService,
+    private sharedDataService: SharedDataServiceService,
+    
   ) { 
   }
 
-  ngOnInit(): void {
-    this.characterService.getCharacters().subscribe(
-      
-      (characs) => {
-        let i = 0;
-        this.characters = characs
-        this.characters.map((element: ICharacter) => {
-          element["cardType"] = this.cardTypes[i++]
-        })
-        console.log(this.characters);
-      } 
-    )
+  chooseCharacters(data: any) {
+    if(this.totalCharactersChoosed < 3) {
+      this.choosedCharacters.push(data);
+      this.totalCharactersChoosed++;
+      console.log(this.totalCharactersChoosed)
+    }
+    if(this.totalCharactersChoosed > 3 && this.totalCharactersChoosed < 6) {
+      this.currentPlayer = `${this.player2Name} is choosing ...`
+      this.choosedCharacters.push(data);
+      this.totalCharactersChoosed++;
+      console.log(this.totalCharactersChoosed)
+    }
+    
   }
-  
+  getChoosedCharacters(): any {
+    return this.choosedCharacters;
+  }
+
+  getCharacs() {
+    this.characterService.getCharacters().subscribe(
+      {
+        next:  (characs) => {
+          let i = 0;
+          this.characters = characs
+          this.characters.map((element: ICharacter) => {
+            element["cardType"] = this.cardTypes[i++]
+          })
+          
+        },
+        error: (error) => console.log(error),
+        complete: () => {
+          console.log("completed")
+          console.log(this.characters)
+          this.currentPlayer = `${this.player1Name} is choosing ...`
+          this.sharedDataService.updateData(this.characters)
+        }
+      })
+  }
+
+  ngOnInit(): void {
+    this.getCharacs()
+  } 
 }
-// var source   = document.getElementById("card-template").innerHTML;
-// var template = Handlebars.compile(source);
 
 // var eveelutions = [
 //   {

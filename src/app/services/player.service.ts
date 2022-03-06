@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IPlayer} from "../models/iplayer.model";
+import { API_URL } from '../global';
 
 @Injectable({
   providedIn: 'root'
@@ -9,45 +10,20 @@ import {IPlayer} from "../models/iplayer.model";
 export class PlayerService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  private urlPlayer = 'https://localhost:7087/api/User/users';
+  params = new HttpParams();
 
   constructor(
     private http: HttpClient
      ) {}
 
-  addPlayer(player: IPlayer){
-    console.log("Callind this");
-    const url = `${this.urlPlayer}/add`;
-    console.log(url);
-    return this.http.post<IPlayer>(url, player, this.httpOptions);
-    //console.log("player "+ playerName + " added");
+  getPlayers() {
+    return this.http.get<IPlayer[]>(`${API_URL}/api/User/users`)
   }
-
-  private url2 = "https://localhost:7087/api/User/users"
-  getUsers() {
-    console.log("GET CALL !!");
-    return this.http.get<IPlayer[]>(this.url2);
+  
+  getPlayerByName(name: string) {
+    this.params.set("name", name)
+    console.log(this.params)
+    return this.http.get<IPlayer>(`${API_URL}/api/User/users/name`, {params:this.params})
   }
-/*
-  addPlayer(player: unknown): Observable<IPlayer> {
-    return this.http.post<IPlayer>('', player, this.httpOptions);
-  }
-*/
-
-
-/*
-getJoueurs(): Observable<IJoueur[]> {
-		return this.http.get<IJoueur[]>(this.urljoueur);
-	}
-
-	deleteJoueur(joueur: IJoueur | number): Observable<IJoueur> {
-		const id = typeof joueur === 'number' ? joueur : joueur.Id;
-		const url = `${this.urljoueur}/${id}`;
-
-		return this.http.delete<IJoueur>(url, this.httpOptions);
-	}
- */
-
-
 
 }

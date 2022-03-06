@@ -1,13 +1,12 @@
 <div *ngIf="!allFiguresSelected" id="cards">
   <div class="cardprop">
-    <div *ngFor="let data of characters"> 
+    <div *ngFor="let data of characters" (click)="chooseCharacters(data)"> 
     <figure class={{data.cardType}}>
       <div class="card__image-container">
         <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/575ec21b-072c-4dc2-9964-69874e4837a3/d2ljbl1-968659c4-a4bf-40ba-b791-80cfaaeb1bcc.png/v1/fill/w_804,h_994,strp/eevee_redraw_by_kirkbutler_d2ljbl1-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAwMCIsInBhdGgiOiJcL2ZcLzU3NWVjMjFiLTA3MmMtNGRjMi05OTY0LTY5ODc0ZTQ4MzdhM1wvZDJsamJsMS05Njg2NTljNC1hNGJmLTQwYmEtYjc5MS04MGNmYWFlYjFiY2MucG5nIiwid2lkdGgiOiI8PTgwOSJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.jWgetIt1sRiA1wEBXZvQSb6mAhrsfoJK2_T74mpSSq4" alt="Eevee" class="card__image">
       </div>
-
       <figcaption class="card__caption">
-        <h1 class="card__name"> {{data.charName}}</h1>
+        <h1 class="card__name"> {{data.charName}} : {{data.id}}</h1>
         <table class="card__stats">
           <tbody><tr>
             <th>Ability 1</th>
@@ -30,7 +29,13 @@
           </tbody></table>
       </figcaption>
     </figure>
+    </div>
   </div>
+
+  <div class="player_Infos">
+      <h1 [innerHTML]="currentPlayer" app-game id="player_name">
+      </h1>
+      
   </div>
 
 </div>

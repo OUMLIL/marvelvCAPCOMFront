@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import {IPlayer} from "../../models/iplayer.model";
 import {PlayerService} from "../../services/player.service";
@@ -8,13 +8,13 @@ import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-game',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 
 export class DashboardComponent implements OnInit {
   alert= "";
   title = AppComponent.title;
-  players: IPlayer[] = [];
+  players: IPlayer[] = new Array<IPlayer>(2);
   player1DefaultName = "player 1";
   player2DefaultName = "player 2";
 
@@ -26,74 +26,26 @@ export class DashboardComponent implements OnInit {
   startGame(player1Name: string, player2Name: string): void {
     player1Name = player1Name.trim();
     player2Name = player2Name.trim();
-    // if (player1Name && player2Name) {
-    //   this.players[0] = {
-    //     Id: 0,
-    //     username: player1Name
-    //   }
-    //   this.players[1] = {
-    //     Id: 0,
-    //     username: player2Name
-    //   }
-    //   console.log(this.playerService.addPlayer(this.players[0]));
-    //   console.log(this.playerService.addPlayer(this.players[1]));
-    //   console.log("Game Started");
-    this.playerService.getUsers().subscribe(
-      (players) => {
-        console.log(players)
+    this.playerService.getPlayers().subscribe({
+      next: (resp) => {
+        console.log(resp)
+        this.players = resp
+      },
+      complete: () => 
+      { 
+        this.playerService.getPlayerByName("test").subscribe(
+          {
+            next: resp => console.log("second call", resp),
+            error: (error) => console.log(error),
+            complete: () => console.log("call completed?")
+          }
+        )
+        console.log('complete') 
+        console.log(this.players[1].username)
       }
+    }
     );
-    //}
   }
-  /*
-  startGame(playerName: string): void {
-    playerName = playerName.trim();
-    if (playerName) {
-      this.playerService.addPlayer({ Nom: playerName.trim() }).subscribe(
-        objet => {
-          location.replace("/window/" + playerName.trim());
-        },
-        error => {
-          switch (error.status) {
-            case 400:
-              this.alert = "Ce pseudo est déjà utilisé";
-              break;
-            default:
-              this.alert = "Impossible de charger la partie";
-          }
-        }
-      );
-    }
-   */
-
-
-  continueGame(player1Name: string, player2Name: string){
-    if (player1Name && player2Name) {
-      this.gameService.continueGame(player1Name.trim(),player2Name.trim());
-      console.log("Game Continued")
-    }
-
-  }
-  /*
-  continueGame(joueurNom: string): void {
-      if (joueurNom) {
-              this.gameService.continueGame(joueurNom.trim()).subscribe((game) => {
-            location.replace("/window/" + game.joueur.Nom);
-          },
-          error => {
-            switch (error.status) {
-              case 404:
-                this.alert = "Aucune partie pour ce pseudo";
-                break;
-              default:
-                this.alert = "Impossible de reprendre la partie";
-            }
-          }
-        );
-      }
-    }
-   */
-
 
   ngOnInit(): void {
   }
