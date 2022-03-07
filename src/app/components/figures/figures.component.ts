@@ -5,6 +5,7 @@ import { AbilityService } from 'src/app/services/ability.service';
 import { Observable, shareReplay } from 'rxjs';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 import { Router } from '@angular/router';
+import { IPlayer } from 'src/app/models/iplayer.model';
 
 @Component({
   selector: 'app-figures',
@@ -20,8 +21,7 @@ export class FiguresComponent implements OnInit {
   private totalCharactersChoosed: number = 0;
   player1_Characs: ICharacter[] = new Array<ICharacter>(3);
   player2_Characs: ICharacter[] = new Array<ICharacter>(3);
-  player1Name: string = "NADALOUV"
-  player2Name: string = "STAIFOUTINE"
+  players: IPlayer[] = new Array<IPlayer>(2);
   
   //for DOM
   allReady: boolean = false
@@ -43,7 +43,7 @@ export class FiguresComponent implements OnInit {
   chooseCharacters(data: any) {
     if(this.totalCharactersChoosed < 6) {
       this.playerChoosing = this.totalCharactersChoosed < 3 ? this.player1_Characs : this.player2_Characs
-      let curr_name =  this.totalCharactersChoosed < 3 ? this.player1Name : this.player2Name
+      let curr_name =  this.totalCharactersChoosed < 3 ? this.players[0].username : this.players[1].username
       this.remainingChoices = this.totalCharactersChoosed < 3 ? 3 : 6
 
       this.playerChoosing.push(data);
@@ -51,7 +51,7 @@ export class FiguresComponent implements OnInit {
 
       let tmp = this.remainingChoices - this.totalCharactersChoosed
       if(tmp == 0) {
-        curr_name = this.player2Name
+        curr_name = this.players[1].username
         tmp = 3
       }
       this.currentPlayer = `${curr_name} is choosing ... ${tmp}`
@@ -69,9 +69,11 @@ export class FiguresComponent implements OnInit {
   }
 
   getChoosedCharacters(): any {
+    const c = this.players[0]
+    const c2 = this.players[1]
     this.data = {
-      c : this.player1_Characs,
-      c2: this.player2_Characs
+      'player1' : [c, this.player1_Characs],
+      'player2' : [c2, this.player2_Characs]
     }
     this.sharedDataService.updateData(this.data)
   }
@@ -90,7 +92,7 @@ export class FiguresComponent implements OnInit {
         error: (error) => console.log(error),
         complete: () => {
           console.log("completed")
-          this.currentPlayer = `${this.player1Name} is choosing ... ${3 - this.totalCharactersChoosed}`
+          this.currentPlayer = `${this.players[0].username} is choosing ... ${3 - this.totalCharactersChoosed}`
           this.sharedDataService.updateData(this.characters)
         }
       })
@@ -98,6 +100,10 @@ export class FiguresComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCharacs()
+    this.sharedDataService.currentPlayers.subscribe(
+      (data) => {
+        this.players = data
+      })
   } 
 }
 
