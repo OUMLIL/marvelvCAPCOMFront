@@ -197,9 +197,10 @@
   width:20px;
   border-radius:50%;
   height:20px;
+  transition: 1s;
 }
 
-.caroussel_diapo input[type=radio]:checked + label{background: hsl(36, 77%, 61%)
+.caroussel_diapo input[type=radio]:checked + label{background: hsl(38, 58%, 42%)
 }
 
 .caroussel_diapo label{background:hsl(203,77%,61%)}

@@ -1,1 +1,17 @@
-<p>game works!</p>
+<div class="game-zone" style="background-image: url('https://i.ibb.co/jDrQtXg/game-arena1.png')">
+
+  <div class="health-bar" style="right: 10vw;">
+    <div class="bar" style="width:{{HpPlayer1}}%">
+    </div>
+  </div>
+
+  <div class="health-bar" style="left: 10vw;">
+    <div class="bar" style="width:{{HpPlayer1}}%">
+    </div>
+  </div>
+</div>
+
+
+<button class="damage random" (click)="changeHp(20)">hit random</button>
+<button class="reset" (click)="changeHp(HpPlayer1 - 100)" >reset</button>
+
