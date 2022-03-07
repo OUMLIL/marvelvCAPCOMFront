@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { IPlayer } from 'src/app/models/iplayer.model';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { ICharacter } from 'src/app/models/icharacter.model';
+import { CharacterService } from 'src/app/services/character.service';
+import { AbilityService } from 'src/app/services/ability.service';
+import { Observable, shareReplay } from 'rxjs';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-figures',
@@ -11,17 +14,92 @@ import { SharedDataServiceService } from 'src/app/services/shared-data-service.s
 export class FiguresComponent implements OnInit {
 
   allFiguresSelected = false;
-  players : IPlayer[] = []
-  constructor( private sharedDataService: SharedDataServiceService,) { }
+  characters:  any;
+  private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
+  private data: any;
+  private totalCharactersChoosed: number = 0;
+  player1_Characs: ICharacter[] = new Array<ICharacter>(3);
+  player2_Characs: ICharacter[] = new Array<ICharacter>(3);
+  player1Name: string = "NADALOUV"
+  player2Name: string = "STAIFOUTINE"
+  
+  //for DOM
+  allReady: boolean = false
+  currentPlayer: string = ""
+  
+  private playerChoosing: any
+  private remainingChoices: number = 0
 
-  ngOnInit(): void {
-    this.sharedDataService.currentPlayers.subscribe(data => this.players = data)
-    console.log(this.players)
+  constructor(
+    private router: Router,
+    private characterService: CharacterService,
+    private abilityService: AbilityService,
+    private sharedDataService: SharedDataServiceService,
+    
+  ) { 
+
   }
 
+  chooseCharacters(data: any) {
+    if(this.totalCharactersChoosed < 6) {
+      this.playerChoosing = this.totalCharactersChoosed < 3 ? this.player1_Characs : this.player2_Characs
+      let curr_name =  this.totalCharactersChoosed < 3 ? this.player1Name : this.player2Name
+      this.remainingChoices = this.totalCharactersChoosed < 3 ? 3 : 6
+
+      this.playerChoosing.push(data);
+      this.totalCharactersChoosed++;
+
+      let tmp = this.remainingChoices - this.totalCharactersChoosed
+      if(tmp == 0) {
+        curr_name = this.player2Name
+        tmp = 3
+      }
+      this.currentPlayer = `${curr_name} is choosing ... ${tmp}`
+      this.allReady = this.totalCharactersChoosed == 6;
+      
+      if(this.allReady) {
+        this.currentPlayer = 'FIGHT IS READY !!'
+      }
+    }
+  }
+
+  playClicked() {
+    this.getChoosedCharacters()
+    this.router.navigate(['arenas'])
+  }
+
+  getChoosedCharacters(): any {
+    this.data = {
+      c : this.player1_Characs,
+      c2: this.player2_Characs
+    }
+    this.sharedDataService.updateData(this.data)
+  }
+
+  getCharacs() {
+    this.characterService.getCharacters().subscribe(
+      {
+        next:  (characs) => {
+          let i = 0;
+          this.characters = characs
+          this.characters.map((element: ICharacter) => {
+            element["cardType"] = this.cardTypes[i++]
+          })
+          
+        },
+        error: (error) => console.log(error),
+        complete: () => {
+          console.log("completed")
+          this.currentPlayer = `${this.player1Name} is choosing ... ${3 - this.totalCharactersChoosed}`
+          this.sharedDataService.updateData(this.characters)
+        }
+      })
+  }
+
+  ngOnInit(): void {
+    this.getCharacs()
+  } 
 }
-// var source   = document.getElementById("card-template").innerHTML;
-// var template = Handlebars.compile(source);
 
 // var eveelutions = [
 //   {

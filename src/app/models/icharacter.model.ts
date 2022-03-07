@@ -12,7 +12,6 @@ export class ICharacter {
     HeathPoints: number = 0;
     Abilities: IAbility[] = [];
 
-
     constructor(Id: number = 0, CharName: string = "", cardType: string = "",  side: string = "", ab1Id: number = 0, ab2Id: number = 0
         , ab3Id: number = 0, ab4Id: number = 0) {
             this.Id = Id;

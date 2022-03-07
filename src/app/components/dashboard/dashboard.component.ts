@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import {IPlayer} from "../../models/iplayer.model";
 import {PlayerService} from "../../services/player.service";
@@ -10,7 +10,7 @@ import { filter } from 'rxjs';
 @Component({
   selector: 'app-game',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 
 export class DashboardComponent implements OnInit {
@@ -72,8 +72,6 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
-
-
   ngOnInit(): void {
   }
 

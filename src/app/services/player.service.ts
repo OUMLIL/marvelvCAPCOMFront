@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IPlayer} from "../models/iplayer.model";
+import { API_URL } from '../global';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ import {IPlayer} from "../models/iplayer.model";
 export class PlayerService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  private urlPlayer = 'https://localhost:7087/api/User/users';
-
+  params = new HttpParams();
+  urlPlayer = `${API_URL}/Users/users`
   constructor(
     private http: HttpClient
      ) {}
@@ -70,7 +71,5 @@ getJoueurs(): Observable<IJoueur[]> {
 		return this.http.delete<IJoueur>(url, this.httpOptions);
 	}
  */
-
-
 
 }

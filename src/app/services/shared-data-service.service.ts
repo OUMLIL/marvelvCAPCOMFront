@@ -23,7 +23,7 @@ export class SharedDataServiceService {
   updateData(data: ICharacter[]) {
     this.datasource.next(data)
   }
-
+  
   updatePlayers(data: IPlayer[]){
       this.playersSource.next(data)
   }
