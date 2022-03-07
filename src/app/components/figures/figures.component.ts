@@ -1,62 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ICharacter } from 'src/app/models/icharacter.model';
-import { CharacterService } from 'src/app/services/character.service';
-import { AbilityService } from 'src/app/services/ability.service';
-import { Icu } from '@angular/compiler/src/i18n/i18n_ast';
-import { Observable } from 'rxjs';
+import { IPlayer } from 'src/app/models/iplayer.model';
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
+
 
 @Component({
   selector: 'app-figures',
   templateUrl: './figures.component.html',
-  styleUrls: ['./figures.component.css'],
+  styleUrls: ['./figures.component.css']
 })
-
 export class FiguresComponent implements OnInit {
 
-  figuresSelected = 0;
-  characters:  any;
-  charactersPlayer1: any;
-  charactersPlayer2: any;
-  playerNum = this.figuresSelected % 2 +1;
-  private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
-
-  constructor(
-    private characterService: CharacterService,
-    private abilityService: AbilityService,
-  ) {
-  }
+  allFiguresSelected = false;
+  players : IPlayer[] = []
+  constructor( private sharedDataService: SharedDataServiceService,) { }
 
   ngOnInit(): void {
-    this.characterService.getCharacters().subscribe(
-
-      (characs) => {
-        let i = 0;
-        this.characters = characs
-        this.characters.map((element: ICharacter) => {
-          element["cardType"] = this.cardTypes[i++]
-        })
-        console.log(this.characters);
-      }
-    )
-    this.charactersPlayer1 = Array<ICharacter>();
-    this.charactersPlayer2 = Array<ICharacter>();
+    this.sharedDataService.currentPlayers.subscribe(data => this.players = data)
+    console.log(this.players)
   }
 
-  chooseCharacter(data: any){
-    this.figuresSelected++;
-    this.playerNum = this.figuresSelected % 2 +1;
-    this.characters.splice(this.characters.indexOf(data),1);
-    if(this.playerNum == 1)
-      this.charactersPlayer1.push(data);
-    else
-      this.charactersPlayer2.push(data);
-    console.log(data.charName + " / player " + this.playerNum);
-    console.log(this.characters);
-    console.log(this.charactersPlayer1, this.charactersPlayer2)
-  }
 }
-
-
 // var source   = document.getElementById("card-template").innerHTML;
 // var template = Handlebars.compile(source);
 

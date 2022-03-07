@@ -1,5 +1,5 @@
-export class IPlayer {
-  Id: number = 0;
-  username: string = "";
+export interface IPlayer {
+  id?: number,
+  username: string
   //OpponentId: number
 }
