@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 @Component({
   selector: 'app-arenas',
   templateUrl: './arenas.component.html',
@@ -8,11 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class ArenasComponent implements OnInit {
   check = [false,false,false,false,false,false,false,false,false,false];
   numberChecked = 2;
-  constructor() {
+  characters: any
+  constructor(
+    private sharedDataService: SharedDataServiceService
+  ) {
     this.check[this.numberChecked] = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sharedDataService.currentData.subscribe((e) => {
+      this.characters = e
+    });
+    this.getCharacters()
+  }
+
+  getCharacters() {
+    console.log(this.characters)
+  }
 
   incrementCheck(){
     this.check[this.numberChecked] = false;
