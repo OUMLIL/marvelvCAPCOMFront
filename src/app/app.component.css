@@ -29,8 +29,8 @@ p {
   background-image: url('https://www.godisageek.com/wp-content/uploads/Pokken-Tournament-review.jpg');
 
   /* Full height */
-  height: 130vh;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 
   /* Center and scale the image nicely */
   background-position: center;
