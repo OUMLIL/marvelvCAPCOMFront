@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./arenas.component.scss']
 })
 export class ArenasComponent implements OnInit {
-  check = [false,false,false,false,false];
+  check = [false,false,false,false,false,false,false,false,false,false];
   numberChecked = 2;
   constructor() {
     this.check[this.numberChecked] = true;
