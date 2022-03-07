@@ -11,7 +11,7 @@ export class PlayerService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   params = new HttpParams();
-  urlPlayer = `${API_URL}/Users/users`
+  urlPlayer = `${API_URL}/api/User/users`
   constructor(
     private http: HttpClient
      ) {}
