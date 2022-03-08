@@ -14,7 +14,7 @@
       <label for="carou_cinq"></label>
       <div class="contenu_carou">
         <div class="caroussel">
-            <img *ngFor="let data of arenas" src="../../../assets/Resources/{{data.arenaImg}}" alt>
+            <img *ngFor="let data of arenas" src={{data.arenaImg}} alt>
         </div>
       </div>
     </div>
