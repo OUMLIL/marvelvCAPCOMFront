@@ -22,4 +22,10 @@
     </div>
   </div>
   <a class="btn-flip-right" data-back="Next" (click)="incrementCheck()" data-front=">>>>"></a>
+    <button  class="bn29 bn28" (click)="addRound()">
+      Generate game
+    </button>
+    <button  class="bn29" [disabled]="!allReady">
+      LISSGO
+    </button>
 </div>

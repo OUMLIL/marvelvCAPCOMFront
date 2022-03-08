@@ -3,11 +3,11 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { ICharacter } from '../models/icharacter.model';
 import { IPlayer } from '../models/iplayer.model';
 import { FiguresComponent } from '../components/figures/figures.component';
-//import dyal les info [id _ joueurs, arene, characters] to build round object
+import { IGame } from '../models/igame.model';
+import { API_URL } from '../global';
 
-//start game 
-//attacking routes
-//game end route
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ import { FiguresComponent } from '../components/figures/figures.component';
 export class GameService {
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  private gameUrl = '';
+  private gameUrl = `${API_URL}/api/Round/rounds`;
 
   constructor(
     private http: HttpClient
@@ -24,6 +24,12 @@ export class GameService {
   continueGame(pseudo1: string, pseudo2: string) {
     console.log("Game of users "+ pseudo1+ " and "+ pseudo2+": continue");
   }
+
+
+  addRound(round : IGame) {
+    return this.http.post<IGame>(this.gameUrl, round, this.httpOptions)
+  }
+
   /*
   continueGame(pseudo: string): Observable<IGame> {
         const url = `${this.gameUrl}/continue/joueur/${pseudo}`;
