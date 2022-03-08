@@ -17,6 +17,7 @@ export class ArenasComponent implements OnInit {
   numberChecked = 2;
   characters: any
   round :  IRound = new IRound()
+  game : IGame = new IGame()
   winner : number = 0
   allReady: boolean = false
   arenas: any;
@@ -33,15 +34,21 @@ export class ArenasComponent implements OnInit {
     this.arenaService.getArenas().subscribe(
       (arena) => {
         this.arenas = arena;
-        console.log(this.arenas);
       }
     );
 
     this.sharedDataService.currentData.subscribe((e) => {
       this.characters = e
     });
-    console.log(this.characters)
+
+    this.sharedDataService.currentGame.subscribe((e) => {
+      this.game = e
+    })
+
+    console.log(this.game)
+
     this.createRound()
+    this.createGame()
   }
 
   createRound() {
@@ -60,17 +67,25 @@ export class ArenasComponent implements OnInit {
   addRound() {
     this.createRound()
     this.gameService.addRound(this.round).subscribe({
-      next: (data) => console.log(data),
+      next: (data) => {
+        console.log("adding round", data)
+        this.round = data
+        this.sharedDataService.updateRound(this.round)
+      },
       complete: () => {
         console.log('round posted')
-        this.sharedDataService.updateRound(this.round)
         this.allReady = true
       }
     })
   }
 
   createGame() {
-    
+    this.gameService.createGame(this.game).subscribe({
+      next: (data) => console.log(data),
+      complete: () => {
+        console.log('game object created')
+      }
+    })
   }
 
   playGame() {

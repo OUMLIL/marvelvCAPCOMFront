@@ -32,6 +32,7 @@ export class GameService {
   }
 
   createGame(game: IGame) {
+    console.log(`calling : ${API_URL}/api/game/games`)
     return this.http.post<IGame>(`${API_URL}/api/game/games`, game, this.httpOptions)
   }
   /*

@@ -6,6 +6,7 @@ import { Observable, shareReplay } from 'rxjs';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 import { Router } from '@angular/router';
 import { IPlayer } from 'src/app/models/iplayer.model';
+import { IGame } from 'src/app/models/igame.model';
 
 @Component({
   selector: 'app-figures',
@@ -18,6 +19,7 @@ export class FiguresComponent implements OnInit {
   characters:  any;
   private cardTypes = ['card card--normal', 'card card--water', 'card card--electric', 'card card--fire', 'card card--psychic', 'card card--dark']
   private data: any;
+  private databis: IGame = new IGame()
   private totalCharactersChoosed: number = 0;
   player1_Characs: ICharacter[] = new Array<ICharacter>(3);
   player2_Characs: ICharacter[] = new Array<ICharacter>(3);
@@ -75,7 +77,18 @@ export class FiguresComponent implements OnInit {
       'player1' : [c, this.player1_Characs],
       'player2' : [c2, this.player2_Characs]
     }
+    this.databis = {
+        player1 : {
+          player: c,
+          characters: this.player1_Characs
+        },
+        player2 : {
+          player: c2,
+          characters: this.player2_Characs
+        }
+      }
     this.sharedDataService.updateData(this.data)
+    this.sharedDataService.updateGame(this.databis)
   }
 
   getCharacs() {
