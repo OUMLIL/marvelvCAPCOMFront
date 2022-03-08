@@ -74,7 +74,7 @@ export class ArenasComponent implements OnInit {
   }
 
   playGame() {
-    this.router.navigate(['game'])
+    //this.router.navigate(['game'])
   }
 
   incrementCheck(){

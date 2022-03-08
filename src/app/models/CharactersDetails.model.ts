@@ -1,7 +1,5 @@
 import { ICharacter } from "./icharacter.model";
 import { IAbility } from "./iability.model";
-import { isBoolean } from "util";
-
 
 export class CharactersDetails {
     
