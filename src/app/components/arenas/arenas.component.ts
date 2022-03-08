@@ -6,6 +6,7 @@ import { IPlayer } from 'src/app/models/iplayer.model';
 import { GameService } from 'src/app/services/game.service';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 import { IGame } from 'src/app/models/igame.model';
+import {ArenaService} from "../../services/arena.service";
 @Component({
   selector: 'app-arenas',
   templateUrl: './arenas.component.html',
@@ -18,23 +19,30 @@ export class ArenasComponent implements OnInit {
   round :  IRound = new IRound()
   winner : number = 0
   allReady: boolean = false
-  game : IGame = new IGame()
+  arenas: any;
+
   constructor(
     private sharedDataService: SharedDataServiceService,
     private gameService: GameService,
-    private router: Router,
+    private arenaService: ArenaService
   ) {
     this.check[this.numberChecked] = true;
   }
 
   ngOnInit(): void {
+    this.arenaService.getArenas().subscribe(
+      (arena) => {
+        this.arenas = arena;
+        console.log(this.arenas);
+      }
+    );
+
     this.sharedDataService.currentData.subscribe((e) => {
       this.characters = e
     });
     console.log(this.characters)
     this.createRound()
   }
-
 
   createRound() {
     const player1_chars = new Array<number>(3)
