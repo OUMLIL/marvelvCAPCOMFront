@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ICharacter} from "../../models/icharacter.model";
 import {style} from "@angular/animations";
+import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 
 @Component({
   selector: 'app-game',
@@ -29,9 +30,10 @@ export class GameComponent implements OnInit {
     red: "#d95f5f"
   };
 
-  constructor() { }
+  constructor(private sharedDataService: SharedDataServiceService,) { }
 
   ngOnInit(): void {
+    console.log(this.sharedDataService.currentRound.subscribe( e => console.log(e)))
   }
 
   changeHp(damage: number, charHP: number){

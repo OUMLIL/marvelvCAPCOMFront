@@ -12,7 +12,7 @@
     <input [checked]=check[4] id="carou_cinq" name="rotation" type="radio">
     <label for="carou_cinq"></label>
     <div class="contenu_carou">
-      <div class="caroussel" routerLink="/game" (click)="pickArena()">
+      <div class="caroussel" (click)="pickArena()">
         <img  src="https://i.ibb.co/ccSxd2Y/1.png" alt>
         <img  src="https://i.ibb.co/KVVf0jL/2.png" alt>
         <img  src="https://i.ibb.co/XJ0xZKW/3.png" alt>
@@ -25,7 +25,7 @@
     <button  class="bn29 bn28" (click)="addRound()">
       Generate game
     </button>
-    <button  class="bn29" [disabled]="!allReady">
+    <button  class="bn29" (click)="playGame()" [disabled]="!allReady" >
       LISSGO
     </button>
 </div>

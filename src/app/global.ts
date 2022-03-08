@@ -1,5 +1,5 @@
 import {IPlayer} from "./models/iplayer.model"
-import { IGame } from "./models/igame.model"
+import { IRound } from "./models/iround.model"
 
 
 export const API_URL = "https://localhost:7087"

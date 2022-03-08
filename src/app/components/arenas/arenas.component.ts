@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { from, ignoreElements } from 'rxjs';
-import { IGame } from 'src/app/models/igame.model';
+import { IRound } from 'src/app/models/iround.model';
 import { IPlayer } from 'src/app/models/iplayer.model';
 import { GameService } from 'src/app/services/game.service';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
+import { IGame } from 'src/app/models/igame.model';
 @Component({
   selector: 'app-arenas',
   templateUrl: './arenas.component.html',
@@ -13,12 +15,14 @@ export class ArenasComponent implements OnInit {
   check = [false,false,false,false,false,false,false,false,false,false];
   numberChecked = 2;
   characters: any
-  round : IGame = new IGame()
+  round :  IRound = new IRound()
   winner : number = 0
   allReady: boolean = false
+  game : IGame = new IGame()
   constructor(
     private sharedDataService: SharedDataServiceService,
-    private gameService: GameService
+    private gameService: GameService,
+    private router: Router,
   ) {
     this.check[this.numberChecked] = true;
   }
@@ -42,8 +46,7 @@ export class ArenasComponent implements OnInit {
       player1_chars[i] = this.characters.player1[1][i+3].id
       player2_chars[i] = this.characters.player2[1][i+3].id
     }
-    this.round = new IGame(0, player1, player2, player1_chars, player2_chars, this.winner, 1)
-    console.log(this.round)
+    this.round = new IRound(0, player1, player2, player1_chars, player2_chars, this.winner, 1)
   }
 
   addRound() {
@@ -52,15 +55,18 @@ export class ArenasComponent implements OnInit {
       next: (data) => console.log(data),
       complete: () => {
         console.log('round posted')
+        this.sharedDataService.updateRound(this.round)
         this.allReady = true
       }
     })
   }
 
+  createGame() {
+    
+  }
+
   playGame() {
-    if(this.allReady) {
-      //this.route.navigate['UI']
-    }
+    this.router.navigate(['game'])
   }
 
   incrementCheck(){
