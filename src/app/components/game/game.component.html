@@ -1,5 +1,5 @@
 
-<div class="game-zone" style="background-image: url('https://i.ibb.co/w0ThnQ7/2.png')">
+<div class="game-zone" style="background-image: url('https://i.ibb.co/ZVWdWNw/game-arena3.png')">
 
   <div class="health-bar" style="left: 11vw; bottom: 10vw">
     <strong style="margin: 10px;">hero</strong>
@@ -7,9 +7,15 @@
       {{heroCharacterHP}}%
     </div>
   </div>
-  <img class="hero-img" src={{heroSprite}} alt>
-  <img (click)="changeCharacter(1,1)" class="hero-choice1" src={{heroChoices[1]}} alt>
-  <img (click)="changeCharacter(2,1)" class="hero-choice2" src={{heroChoices[2]}} alt>
+  <img
+    class="hero-img"
+    [class.attacking] = "attackingScene[0][0]"
+    [class.damaged] = "attackingScene[0][1]"
+    src={{heroSprite}}
+    alt
+  />
+  <img (click)="changeCharacter(1,0)" class="hero-choice1" src={{heroChoices[1]}} alt>
+  <img (click)="changeCharacter(2,0)" class="hero-choice2" src={{heroChoices[2]}} alt>
 
   <div class="health-bar" style="right: 10vw; top:10vw">
     <strong style="margin: 10px;">enemy</strong>
@@ -17,14 +23,20 @@
       {{enemyCharacterHP}}%
     </div>
   </div>
-  <img class="enemy-img" src={{enemySprite}} alt>
-  <img (click)="changeCharacter(1,2)" class="enemy-choice1" src={{enemyChoices[1]}} alt>
-  <img (click)="changeCharacter(2,2)" class="enemy-choice2" src={{enemyChoices[2]}} alt>
+  <img
+    class="enemy-img"
+    [class.attacking] = "attackingScene[1][0]"
+    [class.damaged] = "attackingScene[1][1]"
+    src={{enemySprite}}
+    alt
+  />
+  <img (click)="changeCharacter(1,1)" class="enemy-choice1" src={{enemyChoices[1]}} alt>
+  <img (click)="changeCharacter(2,1)" class="enemy-choice2" src={{enemyChoices[2]}} alt>
 
   <div class="play-box">
-    <button class="ab1" (click)="changeHp(20, 1)">Ability1</button>
-    <button class="ab2" (click)="changeHp(20, 1)">Ability2</button>
-    <button class="ab3" (click)="changeHp(20, 1)">Ability3</button>
-    <button class="ab4" (click)="changeHp(20, 1)">Ability4</button>
+    <button class="ab1" (click)="attackPlayer(10)">Ability1</button>
+    <button class="ab2" (click)="attackPlayer(5)">Ability2</button>
+    <button class="ab3" (click)="attackPlayer(4)">Ability3</button>
+    <button class="ab4" (click)="attackPlayer(24)">Ability4</button>
   </div>
 </div>

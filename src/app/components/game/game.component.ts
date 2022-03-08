@@ -12,6 +12,14 @@ export class GameComponent implements OnInit {
   heroCharacterHP = 100;
   enemyCharacterHP = 100;
 
+  // 0, 1 :players (hero, enemy) => [attacking,damaged]
+  attackingScene ={
+    0: [false, false],
+    1: [false, false]
+  };
+
+  attackingPlayer = 0;
+
   heroSprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png";
   enemySprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png";
 
@@ -34,28 +42,31 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeHp(damage: number, charHP: number){
-    switch (charHP) {
+  attackPlayer(damage: number){
+    switch (this.attackingPlayer) {
+      case 0:
+        this.enemyCharacterHP = this.enemyCharacterHP - damage;
+        break;
       case 1:
         this.heroCharacterHP = this.heroCharacterHP - damage;
-        break;
-      case 2:
-        this.enemyCharacterHP = this.enemyCharacterHP - damage;
     }
+    this.attackingScene[this.attackingPlayer] = [true, false];
+    this.attackingScene[(this.attackingPlayer+1)%2] = [false, true];
+    this.attackingPlayer = (this.attackingPlayer + 1) % 2;
+
   }
 
   changeCharacter(choiceId:number, charId:number){
     switch (charId) {
-      case 1:
+      case 0:
         let aux = this.heroSprite;
         this.heroSprite = this.heroChoices[choiceId];
         this.heroChoices[choiceId] = aux;
         break;
-      case 2:
+      case 1:
         let aux2 = this.enemySprite;
         this.enemySprite = this.enemyChoices[choiceId];
         this.enemyChoices[choiceId] = aux2;
-
     }
   }
 
