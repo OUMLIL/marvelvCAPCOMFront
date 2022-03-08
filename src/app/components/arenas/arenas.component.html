@@ -12,20 +12,16 @@
     <input [checked]=check[4] id="carou_cinq" name="rotation" type="radio">
     <label for="carou_cinq"></label>
     <div class="contenu_carou">
-      <div class="caroussel" routerLink="/game" (click)="pickArena()">
-        <img  src="https://i.ibb.co/ccSxd2Y/1.png" alt>
-        <img  src="https://i.ibb.co/KVVf0jL/2.png" alt>
-        <img  src="https://i.ibb.co/XJ0xZKW/3.png" alt>
-        <img  src="https://i.ibb.co/3ryF1Yn/4.png" alt>
-        <img  src="https://i.ibb.co/LdpXGHs/5.png" alt>
+      <div class="caroussel">
+        <img *ngFor="let data of arenas" src={{data.arenaImg}} alt>
       </div>
     </div>
   </div>
   <a class="btn-flip-right" data-back="Next" (click)="incrementCheck()" data-front=">>>>"></a>
-    <button  class="bn29 bn28" (click)="addRound()">
-      Generate game
+    <button *ngIf="arenas && !allReady" class="bn29" (click)="addRound()">
+      {{arenas[numberChecked].name}}
     </button>
-    <button  class="bn29" [disabled]="!allReady">
+    <button *ngIf="allReady" class="bn29" [disabled]="!allReady" routerLink="/game">
       LISSGO
     </button>
 </div>
