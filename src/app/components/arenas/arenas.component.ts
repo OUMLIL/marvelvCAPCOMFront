@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArenaService } from 'src/app/services/arena.service';
+
 
 @Component({
   selector: 'app-arenas',
@@ -8,11 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class ArenasComponent implements OnInit {
   check = [false,false,false,false,false];
   numberChecked = 2;
-  constructor() {
+  arenas: any;
+
+  constructor(private arenaService: ArenaService) {
     this.check[this.numberChecked] = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.arenaService.getArenas().subscribe(
+
+      (arena) => {
+        this.arenas = arena;
+        console.log(this.arenas);
+      }
+    )
+
+  }
 
   incrementCheck(){
     this.check[this.numberChecked] = false;
