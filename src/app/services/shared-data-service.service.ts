@@ -10,7 +10,7 @@ import { IGame } from '../models/igame.model';
 })
 export class SharedDataServiceService {
 
-  character: ICharacter[] = new Array<ICharacter>(6);
+  character: ICharacter[] = new Array<ICharacter>(3);
   players : IPlayer[] = new Array<IPlayer>(2)
   round : IRound = new IRound()
   game : IGame = new IGame()

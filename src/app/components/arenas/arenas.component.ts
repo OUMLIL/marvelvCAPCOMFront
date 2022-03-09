@@ -58,8 +58,8 @@ export class ArenasComponent implements OnInit {
     const player2 = this.characters.player2[0].id
     this.winner = player1
     for(let i = 0; i < 3; ++i) {
-      player1_chars[i] = this.characters.player1[1][i+3].id
-      player2_chars[i] = this.characters.player2[1][i+3].id
+      player1_chars[i] = this.characters.player1[1][i].id
+      player2_chars[i] = this.characters.player2[1][i].id
     }
     this.round = new IRound(0, player1, player2, player1_chars, player2_chars, this.winner, 1)
   }
@@ -79,9 +79,18 @@ export class ArenasComponent implements OnInit {
     })
   }
 
+  filtered(arr) {
+    arr.filter(function (el) {
+      return el != null
+    })
+    return arr
+  }
+
   createGame() {
     this.gameService.createGame(this.game).subscribe({
-      next: (data) => console.log(data),
+      next: (data) => {
+        console.log(data)
+      },
       complete: () => {
         console.log('game object created')
       }

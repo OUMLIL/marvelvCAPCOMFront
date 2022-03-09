@@ -4,16 +4,9 @@ import { IAbility } from "./iability.model";
 import { CharactersDetails } from "./CharactersDetails.model";
 export class IGame {
 
-    player1 = {
-        player: {},
-        characters: {}
-    }
-        
-    player2 =  {
-        player: {},
-        characters: {}
-    }
-
+    user1 = {}
+    p1_characs = {}
+    user2 = {}
+    p2_characs = {}
     
-
 }

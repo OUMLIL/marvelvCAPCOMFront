@@ -21,8 +21,8 @@ export class FiguresComponent implements OnInit {
   private data: any;
   private databis: IGame = new IGame()
   private totalCharactersChoosed: number = 0;
-  player1_Characs: ICharacter[] = new Array<ICharacter>(3);
-  player2_Characs: ICharacter[] = new Array<ICharacter>(3);
+  player1_Characs: ICharacter[] = new Array<ICharacter>();
+  player2_Characs: ICharacter[] = new Array<ICharacter>();
   players: IPlayer[] = new Array<IPlayer>(2);
   
   //for DOM
@@ -49,6 +49,7 @@ export class FiguresComponent implements OnInit {
       this.remainingChoices = this.totalCharactersChoosed < 3 ? 3 : 6
 
       this.playerChoosing.push(data);
+      
       this.totalCharactersChoosed++;
 
       let tmp = this.remainingChoices - this.totalCharactersChoosed
@@ -77,16 +78,23 @@ export class FiguresComponent implements OnInit {
       'player1' : [c, this.player1_Characs],
       'player2' : [c2, this.player2_Characs]
     }
+    // this.databis = {
+    //     player1 : {
+    //       player: c,
+    //       characters: this.player1_Characs
+    //     },
+    //     player2 : {
+    //       player: c2,
+    //       characters: this.player2_Characs
+    //     }
+    //   }
+
     this.databis = {
-        player1 : {
-          player: c,
-          characters: this.player1_Characs
-        },
-        player2 : {
-          player: c2,
-          characters: this.player2_Characs
-        }
-      }
+      user1: c,
+      p1_characs: this.player1_Characs,
+      user2: c2,
+      p2_characs: this.player2_Characs
+    }
     this.sharedDataService.updateData(this.data)
     this.sharedDataService.updateGame(this.databis)
   }
