@@ -87,8 +87,8 @@ export class GameComponent implements OnInit {
       this.player2Choices[k] += this.game.p2_characs[k].side.split(' ',5)[0]
       this.player2Choices[k] += ".png"
     }
-    console.log(this.game.user1.username)
-    console.log(this.game.p1_characs[0].heathPoints)
+    //console.log(this.game.user1.username)
+    //console.log(this.game.p1_characs[0].heathPoints)
   }
 
   attackPlayer(damage: number){
@@ -104,7 +104,7 @@ export class GameComponent implements OnInit {
     this.attackingScene[(this.attackingPlayer+1)%2] = [false, true];
     this.attackingPlayer = (this.attackingPlayer + 1) % 2;
 
-    console.log(this.attackingPlayer_backId[this.attackingPlayer],attackedCharacter,damage)
+    //console.log(this.attackingPlayer_backId[this.attackingPlayer],attackedCharacter,damage)
 
     return this.gameService.attack(this.attackingPlayer_backId[this.attackingPlayer],attackedCharacter,damage).subscribe({
       next : (data) => {
@@ -112,7 +112,7 @@ export class GameComponent implements OnInit {
         this.sharedDataService.updateGame(data)
       },
       complete: () => {
-        this.sharedDataService.currentGame.subscribe(e => console.log(e))
+        //this.sharedDataService.currentGame.subscribe(e => console.log(e))
         this.updateHealthPoints(this.attackingPlayer)
         console.log("enemy attacked hehe")
       }
@@ -139,11 +139,8 @@ export class GameComponent implements OnInit {
               this.remainingCharacters[i][j] = false;
               this.playingCharacP1 = this.remainingCharacters[i].indexOf(true);
               this.endGame(i);
-              console.log(this.playingCharacP1)
             }
           }
-
-        console.log(this.remainingCharacters);
         break;
       case 1:
         this.player2CharacterHP = 0;
@@ -155,11 +152,8 @@ export class GameComponent implements OnInit {
               this.remainingCharacters[i][j] = false;
               this.playingCharacP2 = this.remainingCharacters[i].indexOf(true);
               this.endGame(i);
-              console.log(this.playingCharacP2)
             }
           }
-
-        console.log(this.remainingCharacters);
     }
   }
 

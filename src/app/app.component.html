@@ -15,7 +15,7 @@
 
     <div class="spacer"></div>
 
-    <a aria-label="Go to arenas" title="Go to arenas" routerLink="/arenas">
+    <a *ngIf="hasRoute('/game')" aria-label="Go to arenas" title="Go to arenas" routerLink="/arenas">
       <img
         width="30"
         alt="Go to arenas"
@@ -23,7 +23,7 @@
       />
     </a>
 
-    <a aria-label="Go to figures" title="Go to figures" routerLink="/figures">
+    <a *ngIf="hasRoute('/game') || hasRoute('/arenas')" aria-label="Go to figures" title="Go to figures" routerLink="/figures">
       <img
         width="75"
         alt="Go to figures"
