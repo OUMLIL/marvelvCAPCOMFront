@@ -3,7 +3,6 @@
     padding: 0.8em 2.5em;
     outline: none;
     color: white;
-    font-style: 1.2em;
     font-size: 2em;
     position: absolute;
     z-index: 1;
@@ -15,7 +14,7 @@
     top: 85%;
     left: 40%;
   }
-  
+
   .bn29:before,
   .bn29:after {
     position: absolute;
@@ -41,7 +40,7 @@
       #6fba82
     );
   }
-  
+
   .bn29:before {
     -webkit-filter: blur(7px);
     filter: blur(7px);
@@ -50,28 +49,51 @@
     -webkit-animation: pulse 10s infinite ease;
     animation: pulse 10s infinite ease;
   }
-  
+
   .bn29:after {
     -webkit-filter: blur(0.3px);
     filter: blur(0.3px);
   }
-  
+
   .bn29:hover:before {
     width: 115%;
     height: 115%;
   }
-  
-  #player_name {
+
+  #winner_name {
     position: absolute;
     z-index: 2;
     font-size: 4em;
     letter-spacing: 15px;
     color:white;
-    background-color: #1976d2;
-    opacity: 0.8;
+    background: linear-gradient(
+        50deg,
+        #1653ee,
+        #3b65ea,
+        #93abf6
+    );
+    opacity: 0.9;
     border-radius: 40px;
     width: 1500px;
-    top: 70%;
-    left: 7%;
+    top: 30%;
     text-align: center;
   }
+
+#looser_name {
+  position: absolute;
+  z-index: 2;
+  font-size: 4em;
+  letter-spacing: 15px;
+  color:white;
+  background: linear-gradient(
+      50deg,
+      #ee1616,
+      #ea3b4a,
+      #f693a2
+  );
+  opacity: 0.9;
+  border-radius: 40px;
+  width: 1500px;
+  top: 50%;
+  text-align: center;
+}

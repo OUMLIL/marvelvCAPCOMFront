@@ -14,8 +14,10 @@ export class GameEndComponent implements OnInit {
 
   round : IRound = new IRound()
   game : IGame = new IGame()
-  currentPlayer = ""
+  currentWinner = ""
+  currentLooser = ""
   winner = ""
+  looser = ""
 
   constructor(
     private sharedDataService : SharedDataServiceService,
@@ -27,7 +29,9 @@ export class GameEndComponent implements OnInit {
     this.sharedDataService.currentGame.subscribe(e  =>  this.game  = e)
 
     this.winner = this.game.user1.id == this.round.Winner ? this.game.user1.username : this.game.user2.username
-    this.currentPlayer = `WINNER IS : ${this.winner}`
+    this.looser = this.game.user1.id == this.round.Winner ? this.game.user2.username : this.game.user1.username
+    this.currentWinner = `Congratulations ${this.winner}`
+    this.currentLooser = `${this.looser}, maybe next time loooooser XD!`
   }
 
   playClicked() {
