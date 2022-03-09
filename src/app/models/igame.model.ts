@@ -4,9 +4,9 @@ import { IAbility } from "./iability.model";
 import { CharactersDetails } from "./CharactersDetails.model";
 export class IGame {
 
-    user1 = {}
+    user1 = {id : 0, username: ""}
     p1_characs = {}
-    user2 = {}
+    user2 = {id : 0, username: ""}
     p2_characs = {}
     
 }
