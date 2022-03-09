@@ -13,8 +13,8 @@
       style="
         background: rgb({{200 - (percentage1()/100)*200}},{{(percentage1()/100)*200}}, 0);
         width: {{percentage1()}}%
-      "
-    ></div>
+      ">
+    </div>
 
     <div class="remaining-hp">
       <div>{{player1CharacterHP}}/{{player1CharacterHPInitial}}</div>
@@ -97,6 +97,10 @@
       class="ab4" (click)="attackPlayer(this.game.p1_characs[playingCharacP1].ab4.damage)">
       {{this.game.p1_characs[playingCharacP1].ab4.abName}}
     </button>
+    <div class="text-box">
+      <h1 style="font-size: 1.7em;font-family: 'Bowlby One SC', cursive;">{{this.game.user1.username}} It's your turn ..</h1>
+      <h2 style="font-size: 1.8em;font-family: 'Bowlby One SC', cursive;">What will {{this.game.p1_characs[playingCharacP1].charName}} Do ?</h2>
+    </div>
   </div>
 
   <div *ngIf="attackingPlayer == 1" class="play-box">
@@ -116,5 +120,9 @@
       class="ab4" (click)="attackPlayer(this.game.p2_characs[playingCharacP2].ab4.damage)">
       {{this.game.p2_characs[playingCharacP2].ab4.abName}}
     </button>
+    <div class="text-box">
+      <h1 style="font-size: 1.7em;font-family: 'Bowlby One SC', cursive;">{{this.game.user2.username}} It's your turn ..</h1>
+      <h2 style="font-size: 1.8em;font-family: 'Bowlby One SC', cursive;">What will {{this.game.p2_characs[playingCharacP2].charName}} Do ?</h2>
+    </div>
   </div>
 </div>
