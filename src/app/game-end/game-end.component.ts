@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IGame } from '../models/igame.model';
+import { IRound } from '../models/iround.model';
+import { SharedDataServiceService } from '../services/shared-data-service.service';
 
 @Component({
   selector: 'app-game-end',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameEndComponent implements OnInit {
 
-  constructor() { }
+
+  round : IRound = new IRound()
+  game : IGame = new IGame()
+  currentPlayer = ""
+  winner = ""
+
+  constructor(
+    private sharedDataService : SharedDataServiceService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.sharedDataService.currentRound.subscribe(e => this.round  = e)
+    this.sharedDataService.currentGame.subscribe(e  =>  this.game  = e)
+
+    this.winner = this.game.user1.id == this.round.Winner ? this.game.user1.username : this.game.user2.username
+    this.currentPlayer = `WINNER IS : ${this.winner}`
+  }
+
+  playClicked() {
+    this.router.navigate(['/'])
   }
 
 }
