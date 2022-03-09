@@ -7,6 +7,7 @@ import { ignoreElements } from 'rxjs';
 import {GameService} from "../../services/game.service";
 import {IRound} from "../../models/iround.model";
 import {Router} from "@angular/router";
+import {IArena} from "../../models/iarena.model";
 
 @Component({
   selector: 'app-game',
@@ -23,6 +24,7 @@ export class GameComponent implements OnInit {
 
   game: IGame = new IGame();
   round: IRound = new IRound();
+  arena: IArena = new IArena(0,"","")
 
   // 0, 1 :players (player1, player2) => [attacking,damaged]
   attackingScene ={
@@ -42,14 +44,14 @@ export class GameComponent implements OnInit {
   }
 
   player1Choices = {
-    0: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
-    1: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png",
-    2: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/146.png"}
+    0: "https://i.ibb.co/",
+    1: "https://i.ibb.co/",
+    2: "https://i.ibb.co/"}
 
   player2Choices = {
-    0: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
-    1: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-    2: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"}
+    0: "https://i.ibb.co/",
+    1: "https://i.ibb.co/",
+    2: "https://i.ibb.co/"}
 
   constructor(
     private sharedDataService: SharedDataServiceService,
@@ -62,6 +64,7 @@ export class GameComponent implements OnInit {
     console.log(this.sharedDataService.currentRound.subscribe( e => console.log(e)))
     this.sharedDataService.currentGame.subscribe(e => this.game = e)
     this.sharedDataService.currentRound.subscribe(e => this.round = e)
+    this.sharedDataService.currentArena.subscribe(e => this.arena = e)
 
     this.player1CharacterHPInitial =
       this.game.p1_characs[0].heathPoints+
@@ -77,6 +80,13 @@ export class GameComponent implements OnInit {
     this.player2CharacterHP =  this.player2CharacterHPInitial;
 
     this.attackingPlayer_backId = [this.game.user1.id, this.game.user2.id];
+
+    for (let k=0; k<3; k++){
+      this.player1Choices[k] += this.game.p1_characs[k].side.split(' ',5)[1]
+      this.player1Choices[k] += ".png"
+      this.player2Choices[k] += this.game.p2_characs[k].side.split(' ',5)[0]
+      this.player2Choices[k] += ".png"
+    }
     console.log(this.game.user1.username)
     console.log(this.game.p1_characs[0].heathPoints)
   }
@@ -107,16 +117,6 @@ export class GameComponent implements OnInit {
         console.log("enemy attacked hehe")
       }
     })
-  }
-
-  changeCharacter(choiceId:number, playerId:number){
-    switch (playerId) {
-      case 0:
-        this.playingCharacP1 = choiceId
-        break;
-      case 1:
-        this.playingCharacP2 = choiceId
-    }
   }
 
   percentage1(){

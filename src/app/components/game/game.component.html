@@ -1,5 +1,5 @@
 
-<div class="game-zone" style="background-image: url('https://i.ibb.co/ZVWdWNw/game-arena3.png')">
+<div class="game-zone" style="background-image: url({{this.arena.arenaImg}})">
 
   <div class="health-bar" style="left: 11vw; bottom: 10vw">
 
@@ -31,14 +31,12 @@
   />
 
   <img
-    (click)="changeCharacter((playingCharacP1+1)%3,0)"
     class="player1-choice1"
     src={{player1Choices[(playingCharacP1+1)%3]}}
     alt
   />
 
   <img
-    (click)="changeCharacter((playingCharacP1+2)%3,0)"
     class="player1-choice2"
     src={{player1Choices[(playingCharacP1+2)%3]}}
     alt
@@ -71,14 +69,12 @@
   />
 
   <img
-    (click)="changeCharacter((playingCharacP2+1)%3,1)"
     class="player2-choice1"
     src={{player2Choices[(playingCharacP2+1)%3]}}
     alt
   />
 
   <img
-    (click)="changeCharacter((playingCharacP2+2)%3,1)"
     class="player2-choice2"
     src={{player2Choices[(playingCharacP2+2)%3]}}
     alt

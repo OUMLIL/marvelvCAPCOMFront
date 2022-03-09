@@ -7,6 +7,7 @@ import { GameService } from 'src/app/services/game.service';
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
 import { IGame } from 'src/app/models/igame.model';
 import {ArenaService} from "../../services/arena.service";
+import {IArena} from "../../models/iarena.model";
 @Component({
   selector: 'app-arenas',
   templateUrl: './arenas.component.html',
@@ -21,6 +22,7 @@ export class ArenasComponent implements OnInit {
   winner : number = 0
   allReady: boolean = false
   arenas: any;
+  arena : IArena = new IArena(0,"","");
 
   constructor(
     private sharedDataService: SharedDataServiceService,
@@ -61,7 +63,16 @@ export class ArenasComponent implements OnInit {
       player1_chars[i] = this.characters.player1[1][i].id
       player2_chars[i] = this.characters.player2[1][i].id
     }
-    this.round = new IRound(0, player1, player2, player1_chars, player2_chars, this.winner, 1)
+    this.round = new IRound(0, player1, player2, player1_chars, player2_chars, this.winner, this.numberChecked)
+    this.arenaService.getArenaById(this.numberChecked).subscribe({
+      next: data => {
+        this.arena = data;
+        this.sharedDataService.updateArena(this.arena);
+      },
+      complete: () => {
+        console.log(this.arena);
+      }
+    })
   }
 
   addRound() {
