@@ -5,7 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FiguresComponent } from './components/figures/figures.component';
 import { ArenasComponent } from './components/arenas/arenas.component';
 import { GameComponent } from './components/game/game.component';
-import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
