@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ICharacter} from "../../models/icharacter.model";
 import {style} from "@angular/animations";
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
-import {IGame} from "../../models/igame.model";
+import { IGame } from 'src/app/models/igame.model';
+import { ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-game',
@@ -52,9 +53,8 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.sharedDataService.currentRound.subscribe( e => console.log(e)))
-    this.sharedDataService.currentGame.subscribe(
-      data => this.game = data
-    )
+    this.sharedDataService.currentGame.subscribe(e => this.game = e)
+    console.log(this.game.user1.username)
   }
 
   attackPlayer(damage: number){

@@ -90,9 +90,15 @@ export class FiguresComponent implements OnInit {
     //   }
 
     this.databis = {
-      user1: c,
+      user1: {
+        id : (c as any).id,
+        username : c.username
+      },
       p1_characs: this.player1_Characs,
-      user2: c2,
+      user2: {
+        id : (c2 as any).id,
+        username : c2.username
+      },
       p2_characs: this.player2_Characs
     }
     this.sharedDataService.updateData(this.data)
