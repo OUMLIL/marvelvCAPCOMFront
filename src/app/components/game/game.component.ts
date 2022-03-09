@@ -167,7 +167,7 @@ export class GameComponent implements OnInit {
     if(this.remainingCharacters[i].indexOf(true) == -1){
       this.round.Winner = this.attackingPlayer_backId[(i+1)%2];
       this.sharedDataService.updateRound(this.round);
-      this.router.navigate(["/"])
+      this.router.navigate(["gameEnd"])
     }
 
   }

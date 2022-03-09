@@ -15,7 +15,8 @@ import { PlayerService } from './services/player.service';
 import { CharacterService } from './services/character.service';
 import { AbilityService } from './services/ability.service';
 import { SharedDataServiceService } from './services/shared-data-service.service';
-
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { GameEndComponent } from './game-end/game-end.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,8 @@ import { SharedDataServiceService } from './services/shared-data-service.service
     FiguresComponent,
     ArenasComponent,
     GameComponent,
+    AdminPanelComponent,
+    GameEndComponent
   ],
     imports: [
         BrowserModule,
