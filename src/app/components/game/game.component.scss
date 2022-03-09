@@ -29,22 +29,26 @@
   transition: 1s;
 }
 
-.enemy-img{
+.remaining-hp{
+  border: solid red;
+  text-align: right;
+}
+
+.player2-img{
   position:fixed;
   right: 24%;
   top:30%;
   width: 18%;
-
 }
 
-.hero-img{
+.player1-img{
   position:fixed;
   left: 27%;
   bottom:24%;
   width: 18%;
 }
 
-.hero-choice1{
+.player1-choice1{
   background: linear-gradient(
       60deg,
       #d9a867,
@@ -61,7 +65,7 @@
   }
 }
 
-.hero-choice2{
+.player1-choice2{
   background: linear-gradient(
       60deg,
       #d9a867,
@@ -78,7 +82,7 @@
   }
 }
 
-.enemy-choice1{
+.player2-choice1{
   background: linear-gradient(
       60deg,
       #d9a867,
@@ -95,7 +99,7 @@
   }
 }
 
-.enemy-choice2{
+.player2-choice2{
   background: linear-gradient(
       60deg,
       #d9a867,

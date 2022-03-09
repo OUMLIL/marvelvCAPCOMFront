@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ICharacter} from "../../models/icharacter.model";
 import {style} from "@angular/animations";
 import { SharedDataServiceService } from 'src/app/services/shared-data-service.service';
+import {IGame} from "../../models/igame.model";
 
 @Component({
   selector: 'app-game',
@@ -10,25 +11,34 @@ import { SharedDataServiceService } from 'src/app/services/shared-data-service.s
 })
 
 export class GameComponent implements OnInit {
-  heroCharacterHP = 100;
-  enemyCharacterHP = 100;
+  player1CharacterHP = 100;
+  player2CharacterHP = 100;
+  player1CharacterHPInitial = 100;
+  player2CharacterHPInitial = 100;
 
-  // 0, 1 :players (hero, enemy) => [attacking,damaged]
+  game: IGame = new IGame();
+
+  // 0, 1 :players (player1, player2) => [attacking,damaged]
   attackingScene ={
     0: [false, false],
     1: [false, false]
   };
 
+  playingCharacP1 = 0;
+  playingCharacP2 = 0;
+
   attackingPlayer = 0;
 
-  heroSprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png";
-  enemySprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png";
+  player1Sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png";
+  player2Sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png";
 
-  heroChoices = {
+  player1Choices = {
+    0: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/6.png",
     1: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/3.png",
     2: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/146.png"}
 
-  enemyChoices = {
+  player2Choices = {
+    0: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/38.png",
     1: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
     2: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"}
 
@@ -38,37 +48,35 @@ export class GameComponent implements OnInit {
     red: "#d95f5f"
   };
 
-  constructor(private sharedDataService: SharedDataServiceService,) { }
+  constructor(private sharedDataService: SharedDataServiceService) { }
 
   ngOnInit(): void {
     console.log(this.sharedDataService.currentRound.subscribe( e => console.log(e)))
+    this.sharedDataService.currentGame.subscribe(
+      data => this.game = data
+    )
   }
 
   attackPlayer(damage: number){
     switch (this.attackingPlayer) {
       case 0:
-        this.enemyCharacterHP = this.enemyCharacterHP - damage;
+        this.player2CharacterHP = this.player2CharacterHP - damage;
         break;
       case 1:
-        this.heroCharacterHP = this.heroCharacterHP - damage;
+        this.player1CharacterHP = this.player1CharacterHP - damage;
     }
     this.attackingScene[this.attackingPlayer] = [true, false];
     this.attackingScene[(this.attackingPlayer+1)%2] = [false, true];
     this.attackingPlayer = (this.attackingPlayer + 1) % 2;
-
   }
 
-  changeCharacter(choiceId:number, charId:number){
-    switch (charId) {
+  changeCharacter(choiceId:number, playerId:number){
+    switch (playerId) {
       case 0:
-        let aux = this.heroSprite;
-        this.heroSprite = this.heroChoices[choiceId];
-        this.heroChoices[choiceId] = aux;
+        this.playingCharacP1 = choiceId
         break;
       case 1:
-        let aux2 = this.enemySprite;
-        this.enemySprite = this.enemyChoices[choiceId];
-        this.enemyChoices[choiceId] = aux2;
+        this.playingCharacP2 = choiceId
     }
   }
 
