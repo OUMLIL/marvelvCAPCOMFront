@@ -21,7 +21,7 @@
 .bar {
   display: flex;
   justify-content: center;
-  background: #3aaf3a;
+  background: rgb(26, 189, 26);
   border-radius: 100px;
   width: 100%;
   height: max-content;
@@ -30,7 +30,6 @@
 }
 
 .remaining-hp{
-  border: solid red;
   text-align: right;
 }
 

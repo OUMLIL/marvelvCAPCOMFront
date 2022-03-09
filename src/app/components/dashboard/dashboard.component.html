@@ -3,8 +3,8 @@
   <h1><strong>Pour commencer à jouer, choisis ton pseudo ;)</strong></h1>
   <input #playerName1 [defaultValue]="player1DefaultName" class="in">
   <input #playerName2 [defaultValue]="player2DefaultName" class="in">
-  <button class="btn btn-success" [disabled]="!allReady" routerLink="/figures">Let's go !</button>
-  <button class="btn btn-success" (click)="startGame(playerName1.value,playerName2.value)">Add players</button>
+  <button *ngIf="allReady" class="btn btn-success" [disabled]="!allReady" routerLink="/figures">Let's go !</button>
+  <button *ngIf="!allReady" class="btn btn-success" (click)="startGame(playerName1.value,playerName2.value)">Add players</button>
   <video [muted]="'muted'" autoplay loop>
   <source src="../../../assets/Resources/PikaAnim.mp4" type="video/mp4">
   </video>

@@ -3,9 +3,18 @@
 
   <div class="health-bar" style="left: 11vw; bottom: 10vw">
 
-    <strong style="margin: 10px;">Player1</strong>
+    <div style="display: flex; justify-content: space-evenly">
+      <strong style="text-align: left; width: 100%">{{this.game.user1.username}}</strong>
+      <span style="text-align: right; width: 100%">{{this.game.p1_characs[playingCharacP1].charName}}</span>
+    </div>
 
-    <div class="bar" style="width:{{player1CharacterHP}}%"></div>
+    <div
+      class="bar"
+      style="
+        background: rgb({{200 - (percentage1()/100)*200}},{{(percentage1()/100)*200}}, 0);
+        width: {{percentage1()}}%
+      "
+    ></div>
 
     <div class="remaining-hp">
       <div>{{player1CharacterHP}}/{{player1CharacterHPInitial}}</div>
@@ -36,9 +45,21 @@
   />
 
   <div class="health-bar" style="right: 10vw; top:10vw">
-    <strong style="margin: 10px;">player2</strong>
-    <div class="bar" style="width:{{player2CharacterHP}}%">
-      {{player2CharacterHP}}%
+    <div style="display: flex; justify-content: space-evenly">
+      <strong style="text-align: left; width: 100%">{{this.game.user2.username}}</strong>
+      <span style="text-align: right; width: 100%">{{this.game.p2_characs[playingCharacP2].charName}}</span>
+    </div>
+
+    <div
+      class="bar"
+      style="
+        background: rgb({{200 - (percentage2()/100)*200}},{{(percentage2()/100)*200}}, 0);
+        width: {{percentage2()}}%
+      "
+    ></div>
+
+    <div class="remaining-hp">
+      <div>{{player2CharacterHP}}/{{player2CharacterHPInitial}}</div>
     </div>
   </div>
   <img
@@ -64,16 +85,40 @@
   />
 
   <div *ngIf="attackingPlayer == 0" class="play-box">
-    <button class="ab1" (click)="attackPlayer(10)">{{this.game.p1_characs[playingCharacP1].ab1.abName}}</button>
-    <button class="ab2" (click)="attackPlayer(5)">{{this.game.p1_characs[playingCharacP1].ab2.abName}}</button>
-    <button class="ab3" (click)="attackPlayer(4)">{{this.game.p1_characs[playingCharacP1].ab3.abName}}</button>
-    <button class="ab4" (click)="attackPlayer(24)">{{this.game.p1_characs[playingCharacP1].ab4.abName}}</button>
+    <button
+      class="ab1" (click)="attackPlayer(this.game.p1_characs[playingCharacP1].ab1.damage)">
+      {{this.game.p1_characs[playingCharacP1].ab1.abName}}
+    </button>
+    <button
+      class="ab2" (click)="attackPlayer(this.game.p1_characs[playingCharacP1].ab2.damage)">
+      {{this.game.p1_characs[playingCharacP1].ab2.abName}}
+    </button>
+    <button
+      class="ab3" (click)="attackPlayer(this.game.p1_characs[playingCharacP1].ab3.damage)">
+      {{this.game.p1_characs[playingCharacP1].ab3.abName}}
+    </button>
+    <button
+      class="ab4" (click)="attackPlayer(this.game.p1_characs[playingCharacP1].ab4.damage)">
+      {{this.game.p1_characs[playingCharacP1].ab4.abName}}
+    </button>
   </div>
 
   <div *ngIf="attackingPlayer == 1" class="play-box">
-    <button class="ab1" (click)="attackPlayer(10)">{{this.game.p2_characs[playingCharacP2].ab1.abName}}</button>
-    <button class="ab2" (click)="attackPlayer(5)">{{this.game.p2_characs[playingCharacP2].ab2.abName}}</button>
-    <button class="ab3" (click)="attackPlayer(4)">{{this.game.p2_characs[playingCharacP2].ab3.abName}}</button>
-    <button class="ab4" (click)="attackPlayer(24)">{{this.game.p2_characs[playingCharacP2].ab4.abName}}</button>
+    <button
+      class="ab1" (click)="attackPlayer(this.game.p2_characs[playingCharacP2].ab1.damage)">
+      {{this.game.p2_characs[playingCharacP2].ab1.abName}}
+    </button>
+    <button
+      class="ab2" (click)="attackPlayer(this.game.p2_characs[playingCharacP2].ab2.damage)">
+      {{this.game.p2_characs[playingCharacP2].ab2.abName}}
+    </button>
+    <button
+      class="ab3" (click)="attackPlayer(this.game.p2_characs[playingCharacP2].ab3.damage)">
+      {{this.game.p2_characs[playingCharacP2].ab3.abName}}
+    </button>
+    <button
+      class="ab4" (click)="attackPlayer(this.game.p2_characs[playingCharacP2].ab4.damage)">
+      {{this.game.p2_characs[playingCharacP2].ab4.abName}}
+    </button>
   </div>
 </div>

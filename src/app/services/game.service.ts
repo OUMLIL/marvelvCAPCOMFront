@@ -35,42 +35,9 @@ export class GameService {
     console.log(`calling : ${API_URL}/api/game/games`)
     return this.http.post<IGame>(`${API_URL}/api/game/games`, game, this.httpOptions)
   }
-  /*
-  continueGame(pseudo: string): Observable<IRound> {
-        const url = `${this.gameUrl}/continue/joueur/${pseudo}`;
-        // JSON : joueur et chapitreVM
-        return this.http.get<IRound>(url);
-    }
-   */
 
-
-/*
-
-    evenementGame(id: number, eventid: number): Observable<IRound> {
-        const url = `${this.gameUrl}/joueur/${id}/evenement/${eventid}`;
-        return this.http.get<IRound>(url);
-    }
-
-    attaquerSort(id: number, sortilegeId: number, monstre: IPersonnage): Observable<IRound> {
-        const url = `${this.gameUrl}/joueur/${id}/combat/utiliser/sortilege/${sortilegeId}`;
-        return this.http.post<IRound>(url, monstre);
-    }
-
-    attaquerObjet(id: number, objetId: number, monstre: IPersonnage): Observable<IRound> {
-        const url = `${this.gameUrl}/joueur/${id}/combat/utiliser/sortilege/${objetId}`;
-        return this.http.post<IRound>(url, monstre);
-    }
-
-    attaquer(id: number, monstre: IPersonnage): Observable<IRound> {
-        const url = `${this.gameUrl}/joueur/${id}/combat/attaquer`;
-        return this.http.post<IRound>(url, monstre);
-    }
-
-    choixGame(id: number, choixid: number): Observable<IRound> {
-        console.log(id);
-        console.log(choixid);
-        const url = `${this.gameUrl}/joueur/${id}/choix/${choixid}`;
-        return this.http.get<IRound>(url);
-    }
- */
+  attack(aPid : number, aCid : number, damage : number){
+    console.log(`calling : ${API_URL}/api/game/games/attack/attackedPlayer/${aPid}/attackedCharacter/${aCid}/damage/${damage} `)
+    return this.http.post<IGame>(`${API_URL}/api/game/games/attack/attackedPlayer/${aPid}/attackedCharacter/${aCid}/damage/${damage}`,this.httpOptions)
+  }
 }
