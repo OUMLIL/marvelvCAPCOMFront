@@ -4,8 +4,7 @@ input, select, textarea {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
+    margin: 5px auto;
     resize: vertical;
     background-color: #398ee4;
     color: white;
@@ -117,11 +116,10 @@ label {
       rgba(224, 209, 212, 0.83)
   );
   display: grid;
-  width: 40vh;
+  width: 30vh;
   height: 80vh;
-  border: solid red;
   margin: auto;
-  align-content: center;
+  padding: 2%;
   justify-items: center;
 }
 
@@ -133,12 +131,11 @@ label {
       rgba(224, 209, 212, 0.83)
   );
   display: grid;
-  width: 40vh;
+  width: 30vh;
   height: 80vh;
-  border: solid red;
   margin: auto;
-  align-content: center;
   justify-items: center;
+  padding: 2%;
 }
 
 .text{
@@ -146,5 +143,12 @@ label {
   text-transform: uppercase;
   font-size: 150%;
   color: #100404;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Bowlby One SC', cursive;
+}
+
+.url-button{
+  background-color: #27c6c9;
+  margin: 5px;
+  padding: 10px;
+  font-family: 'Bowlby One SC', cursive;
 }
