@@ -10,7 +10,8 @@ import { AbilityService } from 'src/app/services/ability.service';
 export class AdminPanelComponent implements OnInit {
   abilities : any
   CharacterDefaultName = "Character"
-
+  selectedAbility : IAbility = new IAbility()
+  selectedDevice: any
   constructor(private abilityService: AbilityService,) { }
 
   ngOnInit(): void {
@@ -20,5 +21,4 @@ export class AdminPanelComponent implements OnInit {
         complete: () => console.log(this.abilities[0])
       });
   }
-
 }

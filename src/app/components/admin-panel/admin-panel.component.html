@@ -1,39 +1,42 @@
 <p>admin-panel works!</p>
-<div >
-    <div>
+<div class="character-form">
+    <div class="normal-input">
         <label for="charName">Character Name</label>
         <input #charName type="text"  name="charName" [defaultValue]="CharacterDefaultName" >
     </div>
-    <div>
+    <div class="normal-input">
         <label for="side">URL</label>
-        <input type="text"  name="side" >
+        <input #url type="text"  name="side" >
     </div>
-    <div>
+    <div class="normal-input">
         <label for="ab1">Ability 1</label>
-        <select  name="ab1">
+        <select #ab1 name="ab1">
             <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
-    <div>
+    <div class="normal-input">
         <label for="ab2">Ability 2</label>
-        <select  name="ab2">
+        <select #ab2 name="ab2">
             <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
-    <div>
+    <div class="normal-input">
         <label for="ab3">Ability 3</label>
-        <select  name="ab3">
-            <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
+        <select #ab3 name="ab3">
+            <option  *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
-    <div>
+    <div class="normal-input">
         <label for="ab4">Ability 4</label>
-        <select  name="ab4">
-            <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
+        <select #ab4 name="ab4">
+            <option  *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
-    <div>
+    <div class="normal-input">
         <label for="healthPoint">health Points</label>
-        <input type="number" name="healthPoint" min="100" max="120">
+        <input #healthP type="number" name="healthPoint" min="100" max="120">
     </div>
+    <button  class="bn29">
+        Add Character
+     </button>
 </div>
