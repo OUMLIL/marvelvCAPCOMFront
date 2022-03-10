@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'figures', component: FiguresComponent},
   { path: 'arenas', component: ArenasComponent},
   { path: 'game', component: GameComponent},
-  { path: 'gameEnd', component: GameEndComponent}
+  { path: 'gameEnd', component: GameEndComponent},
   { path: 'adminPanel', component: AdminPanelComponent}
 ];
 

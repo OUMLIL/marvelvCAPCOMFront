@@ -51,20 +51,6 @@ export class AdminPanelComponent implements OnInit {
     this.imgBack = urlBack;
   }
 
-  pickAbility(ab : IAbility, index : number){
-    this.selectedAbilities[index] = ab;
-    console.log(this.selectedAbilities[index])
-  }
-
-  chooseCharacterName(value: string){
-    this.CharacterName = value;
-    console.log(this.CharacterName)
-  }
-
-  pickHp(value:string){
-    this.Hp = parseInt(value)
-  }
-
   addChar(){
     this.finalUrlIng =  this.finalUrlIng.replace(
       this.finalUrlIng.split(" ",3)[1],
@@ -74,7 +60,6 @@ export class AdminPanelComponent implements OnInit {
       this.imgBack.replace("https://i.ibb.co/", "").replace(".png","")
     )
     console.log(this.CharacterName)
-    console.log(this.selectedAbilities)
     console.log(this.selectedAb1)
     console.log(this.selectedAb2)
     console.log(this.selectedAb3)
