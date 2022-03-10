@@ -14,7 +14,7 @@ export class AdminPanelComponent implements OnInit {
 
   imgFront ="https://i.ibb.co/xhrf1KC/m1.png"
 
-  imgBack ="https://i.ibb.co/xhrf1KC/m0.png"
+  imgBack ="https://i.ibb.co/WymZxSd/m0.png"
 
   selectedAbility : IAbility = new IAbility()
 

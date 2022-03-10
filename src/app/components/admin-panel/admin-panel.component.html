@@ -1,15 +1,20 @@
 <div style="display: flex; align-items: center; justify-content: space-evenly">
 
   <div class="img-front">
-    <div>Front side of your character</div>
-    <img src={{imgFront}}/>
+    <div class="text" >Front side of your character</div>
+    <img style="width: 100%" src={{imgFront}}/>
   </div>
 
 <div class="character-form">
+
     <div class="normal-input">
         <label>Character Name</label>
         <input #charName type="text"  name="charName" [defaultValue]="CharacterDefaultName" >
     </div>
+
+    <label>Upload your sprints on this link</label>
+    <label>https://imgbb.com/</label>
+    <label>And put the generated URLs in the corresponding case </label>
 
     <div class="normal-input">
         <label>URL (Front Side)</label>
@@ -58,7 +63,7 @@
 </div>
 
   <div class="img-back">
-    <div>Front side of your character</div>
-    <img src={{imgBack}}/>
+    <div class="text">Back side of your character</div>
+    <img style="width: 100%" src={{imgBack}}/>
   </div>
 </div>
