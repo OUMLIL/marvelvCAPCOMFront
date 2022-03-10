@@ -31,7 +31,7 @@ export class GameEndComponent implements OnInit {
     this.winner = this.game.user1.id == this.round.Winner ? this.game.user1.username : this.game.user2.username
     this.looser = this.game.user1.id == this.round.Winner ? this.game.user2.username : this.game.user1.username
     this.currentWinner = `Congratulations ${this.winner}`
-    this.currentLooser = `${this.looser}, maybe next time loooooser XD!`
+    this.currentLooser = `${this.looser}, maybe next time, loooooser XD!`
   }
 
   playClicked() {
