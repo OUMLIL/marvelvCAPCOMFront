@@ -17,4 +17,8 @@ export class AbilityService {
   getAbilityById(id: number) {
     return this.http.get<IAbility>(`${API_URL}/api/Ability/abilities/${id}`)
   }
+
+  getAllAbilities(){
+    return this.http.get<IAbility[]>(`${API_URL}/api/Ability/abilities`)
+  }
 }

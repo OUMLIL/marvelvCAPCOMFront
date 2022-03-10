@@ -1,0 +1,81 @@
+<div style="display: flex; align-items: center; justify-content: space-evenly">
+
+  <div class="img-front">
+    <div class="text" >Front side of your character</div>
+    <img style="width: 100%" src={{imgFront}}/>
+    <div *ngIf="ab1.options[ab1.selectedIndex]" class="text">Ability 1: <br> {{ab1.options[ab1.selectedIndex].text}}</div>
+    <div *ngIf="ab2.options[ab2.selectedIndex]" class="text">Ability 2: <br> {{ab2.options[ab2.selectedIndex].text}}</div>
+  </div>
+
+<div class="character-form">
+
+    <div class="normal-input">
+        <label>Character Name</label>
+        <input [(ngModel)]="CharacterName" [value]="CharacterName" #charName type="text" name="charName" [defaultValue]="CharacterName" >
+    </div>
+
+    <label>Upload your sprints on this link</label>
+    <label>https://imgbb.com/</label>
+    <label>And put the generated URLs in the corresponding cases </label>
+
+    <div class="normal-input">
+        <label>URL (Front Side)</label>
+        <input #urlFront type="text"  name="side" >
+      <button class="url-button" (click)="chooseUrlFront(urlFront.value)">Pick it</button>
+    </div>
+
+    <div class="normal-input">
+      <label>URL (Back Side)</label>
+      <input #urlBack type="text"  name="side" >
+      <button class="url-button" (click)="chooseUrlBack(urlBack.value)">Pick it</button>
+    </div>
+
+    <div class="normal-input">
+        <label>Ability 1</label>
+        <select [(ngModel)]="selectedAb1" class="option-list" #ab1 name="ab1">
+            <option *ngFor="let ability of abilities" [ngValue]="ability" >{{ability.abName}}</option>
+        </select>
+
+    </div>
+
+    <div class="normal-input">
+      <label>Ability 2</label>
+        <select [(ngModel)]="selectedAb2" class="option-list" #ab2 name="ab2">
+            <option *ngFor="let ability of abilities" [ngValue]="ability" >{{ability.abName}}</option>
+        </select>
+    </div>
+
+    <div class="normal-input">
+      <label>Ability 3</label>
+        <select [(ngModel)]="selectedAb3" class="option-list" #ab3 name="ab3">
+            <option  *ngFor="let ability of abilities" [ngValue]="ability" >{{ability.abName}}</option>
+        </select>
+    </div>
+
+    <div class="normal-input">
+      <label>Ability 4</label>
+        <select [(ngModel)]="selectedAb4" class="option-list" #ab4 name="ab4">
+            <option  *ngFor="let ability of abilities" [ngValue]="ability" >{{ability.abName}}</option>
+        </select>
+    </div>
+
+    <div class="normal-input">
+        <label>health Points</label>
+        <input [(ngModel)]="Hp" [value]="Hp" #healthP type="number" name="healthPoint" min="100" max="120" [defaultValue]="100">
+    </div>
+
+    <button
+      *ngIf="CharacterName"
+      class="bn29"
+      (click)="addChar()"
+    >
+      Add Character</button>
+</div>
+
+  <div class="img-back">
+    <div class="text">Back side of your character</div>
+    <img style="width: 90%" src={{imgBack}}/>
+    <div *ngIf="ab3.options[ab3.selectedIndex]" class="text">Ability 3: <br> {{ab3.options[ab3.selectedIndex].text}}</div>
+    <div *ngIf="ab4.options[ab4.selectedIndex]" class="text">Ability 4: <br> {{ab4.options[ab4.selectedIndex].text}}</div>
+  </div>
+</div>
