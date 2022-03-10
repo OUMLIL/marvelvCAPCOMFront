@@ -1,42 +1,64 @@
-<p>admin-panel works!</p>
+<div style="display: flex; align-items: center; justify-content: space-evenly">
+
+  <div class="img-front">
+    <div>Front side of your character</div>
+    <img src="https://i.ibb.co/vJ2CMW8/admin.png"/>
+  </div>
+
 <div class="character-form">
     <div class="normal-input">
-        <label for="charName">Character Name</label>
+        <label>Character Name</label>
         <input #charName type="text"  name="charName" [defaultValue]="CharacterDefaultName" >
     </div>
+
     <div class="normal-input">
-        <label for="side">URL</label>
+        <label>URL (Front Side)</label>
         <input #url type="text"  name="side" >
     </div>
+
     <div class="normal-input">
-        <label for="ab1">Ability 1</label>
-        <select #ab1 name="ab1">
+      <label>URL (Back Side)</label>
+      <input #url type="text"  name="side" >
+    </div>
+
+    <div class="normal-input">
+        <label>Ability 1</label>
+        <select class="option-list" #ab1 name="ab1">
             <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
+
     <div class="normal-input">
-        <label for="ab2">Ability 2</label>
-        <select #ab2 name="ab2">
+        <label>Ability 2</label>
+        <select class="option-list" #ab2 name="ab2">
             <option *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
+
     <div class="normal-input">
-        <label for="ab3">Ability 3</label>
-        <select #ab3 name="ab3">
+        <label>Ability 3</label>
+        <select class="option-list" #ab3 name="ab3">
             <option  *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
+
     <div class="normal-input">
-        <label for="ab4">Ability 4</label>
-        <select #ab4 name="ab4">
+        <label>Ability 4</label>
+        <select class="option-list" #ab4 name="ab4">
             <option  *ngFor="let ability of abilities" [value]="ability" >{{ability.abName}}</option>
         </select>
     </div>
+
     <div class="normal-input">
-        <label for="healthPoint">health Points</label>
+        <label>health Points</label>
         <input #healthP type="number" name="healthPoint" min="100" max="120">
     </div>
-    <button  class="bn29">
-        Add Character
-     </button>
+
+    <button class="bn29">Add Character</button>
+</div>
+
+  <div class="img-back">
+    <div>Front side of your character</div>
+    <img src="https://i.ibb.co/vJ2CMW8/admin.png"/>
+  </div>
 </div>

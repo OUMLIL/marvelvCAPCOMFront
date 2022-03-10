@@ -9,8 +9,15 @@ import { AbilityService } from 'src/app/services/ability.service';
 })
 export class AdminPanelComponent implements OnInit {
   abilities : any
+
   CharacterDefaultName = "Character"
+
+  imgFrontDefault =""
+
+  imgBackDefault =""
+
   selectedAbility : IAbility = new IAbility()
+
   selectedDevice: any
   constructor(private abilityService: AbilityService,) { }
 

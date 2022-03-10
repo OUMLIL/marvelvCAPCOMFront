@@ -1,26 +1,29 @@
 input, select, textarea {
-    width: 20%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
+    width: max-content ;
+    padding: 12px;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    box-sizing: border-box; 
-    margin-top: 6px; 
-    margin-bottom: 16px; 
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
     resize: vertical;
     background-color: #398ee4;
     color: white;
 }
 
 .character-form {
-    margin-left: 10px;
-    background-color: rgba(44, 44, 56, 0.527);
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  margin: auto;
+  padding: 3%;
+  background-color: rgba(44, 44, 56, 0.527);
+  width: max-content;
+  height: max-content;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-  
+
   /* When moving the mouse over the submit button, add a darker green color */
 input[type=submit]:hover {
     background-color: #45a049;
@@ -28,7 +31,7 @@ input[type=submit]:hover {
 
 label {
   font-size: 1.2em;
-  letter-spacing: 15px;
+  letter-spacing: 5px;
   color:white;
   background-color: #1976d2;
   opacity: 0.8;
@@ -39,42 +42,45 @@ label {
 
 .bn29 {
   border: none;
+  margin: 5% auto auto;
   padding: 0.8em 2.5em;
   outline: none;
   color: white;
-  font-style: 1.2em;
   font-size: 2em;
+  position: relative;
   z-index: 1;
   cursor: pointer;
   background: none;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
   width: 400px;
-  height: 100px;
+  height: 80px;
+  top: 80%;
+  left: auto;
 }
 
 .bn29:before,
 .bn29:after {
   position: absolute;
-  top: 74%;
-  left: 13%;
+  top: 50%;
+  left: 50%;
   border-radius: 10em;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  width: 20%;
-  height: 10%;
+  width: 105%;
+  height: 105%;
   content: "";
   z-index: -2;
   background-size: 400% 400%;
   background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
+      60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82
   );
 }
 
@@ -93,6 +99,26 @@ label {
 }
 
 .bn29:hover:before {
-  width: 22%;
-  height: 12%;
+  width: 115%;
+  height: 115%;
+}
+
+.option-list{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.img-front{
+
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-back{
+
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
