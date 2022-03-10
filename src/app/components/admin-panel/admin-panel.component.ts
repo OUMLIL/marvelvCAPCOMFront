@@ -12,9 +12,9 @@ export class AdminPanelComponent implements OnInit {
 
   CharacterDefaultName = "Character"
 
-  imgFrontDefault =""
+  imgFront ="https://i.ibb.co/xhrf1KC/m1.png"
 
-  imgBackDefault =""
+  imgBack ="https://i.ibb.co/xhrf1KC/m0.png"
 
   selectedAbility : IAbility = new IAbility()
 
