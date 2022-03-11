@@ -19,6 +19,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import {FormsModule} from "@angular/forms";
 import { GameEndComponent } from './game-end/game-end.component';
 import { AdminAddArenaComponent } from './components/admin-add-arena/admin-add-arena.component';
+import { AdminAddAbComponent } from './components/admin-add-ab/admin-add-ab.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AdminAddArenaComponent } from './components/admin-add-arena/admin-add-a
     GameComponent,
     AdminPanelComponent,
     GameEndComponent,
-    AdminAddArenaComponent
+    AdminAddArenaComponent,
+    AdminAddAbComponent
   ],
     imports: [
         BrowserModule,

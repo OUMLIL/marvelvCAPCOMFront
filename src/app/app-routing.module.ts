@@ -8,6 +8,7 @@ import { GameComponent } from './components/game/game.component';
 import { GameEndComponent } from './game-end/game-end.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {AdminAddArenaComponent} from "./components/admin-add-arena/admin-add-arena.component";
+import {AdminAddAbComponent} from "./components/admin-add-ab/admin-add-ab.component";
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'game', component: GameComponent},
   { path: 'gameEnd', component: GameEndComponent},
   { path: 'adminPanel', component: AdminPanelComponent},
-  { path: 'admin-add-arena', component: AdminAddArenaComponent}
+  { path: 'admin-add-arena', component: AdminAddArenaComponent},
+  { path: 'admin-add-ab', component: AdminAddAbComponent}
 ];
 
 @NgModule({
