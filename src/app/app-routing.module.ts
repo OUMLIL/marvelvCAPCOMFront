@@ -8,8 +8,6 @@ import { GameComponent } from './components/game/game.component';
 import { GameEndComponent } from './components/game-end/game-end.component';
 import { AdminPanelComponent } from './components/admin-add-character/admin-panel.component';
 import {AdminAddArenaComponent} from "./components/admin-add-arena/admin-add-arena.component";
-import {AdminAddAbComponent} from "./components/admin-add-ab/admin-add-ab.component";
-import {AdminDeleteAbComponent} from "./components/admin-delete-ab/admin-delete-ab.component";
 import {AdminDeleteCharacterComponent} from "./components/admin-delete-character/admin-delete-character.component";
 import {AdminDeleteArenaComponent} from "./components/admin-delete-arena/admin-delete-arena.component";
 
@@ -21,8 +19,6 @@ const routes: Routes = [
   { path: 'gameEnd', component: GameEndComponent},
   { path: 'admin-add-character', component: AdminPanelComponent},
   { path: 'admin-add-arena', component: AdminAddArenaComponent},
-  { path: 'admin-add-ab', component: AdminAddAbComponent},
-  { path: 'admin-delete-ab', component: AdminDeleteAbComponent},
   { path: 'admin-delete-arena', component: AdminDeleteArenaComponent},
   { path: 'admin-delete-character', component: AdminDeleteCharacterComponent}
 ];
