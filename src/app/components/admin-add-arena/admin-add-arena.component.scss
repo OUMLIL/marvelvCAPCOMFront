@@ -10,9 +10,9 @@ input, select, textarea {
   color: white;
 }
 
-.character-form {
+.arena-form {
   display: flex;
-  margin: auto;
+  margin: 2% auto;
   padding: 3%;
   background-color: rgba(44, 44, 56, 0.527);
   width: max-content;
@@ -108,7 +108,7 @@ label {
   }
 }
 
-.img-front{
+.img{
   background: linear-gradient(
       60deg,
       rgba(227, 136, 63, 0.89),
@@ -116,26 +116,11 @@ label {
       rgba(224, 209, 212, 0.83)
   );
   display: grid;
-  width: 30vh;
-  height: 80vh;
-  margin: auto;
+  width: max-content;
+  height: 50vh;
+  margin: 0 auto;
   padding: 2%;
   justify-items: center;
-}
-
-.img-back{
-  background: linear-gradient(
-      60deg,
-      rgba(227, 136, 63, 0.89),
-      rgba(220, 169, 121, 0.8),
-      rgba(224, 209, 212, 0.83)
-  );
-  display: grid;
-  width: 30vh;
-  height: 80vh;
-  margin: auto;
-  justify-items: center;
-  padding: 2%;
 }
 
 .text{
