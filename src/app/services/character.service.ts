@@ -21,6 +21,14 @@ export class CharacterService {
     return this.http.get<ICharacter>(`${API_URL}/api/Character/characters/${id}`)
   }
 
+  addCharacter(character : ICharacter){
+    return this.http.post<ICharacter>(`${API_URL}/api/Character/characters`,character,this.httpOptions);
+  }
+  
+  deleteCharacter(id : number){
+    return this.http.delete<ICharacter>(`${API_URL}/api/Character/characters/${id}`)
+  }
+
   //getCharacterByID
   //addCharacter
   //updateCharacter
