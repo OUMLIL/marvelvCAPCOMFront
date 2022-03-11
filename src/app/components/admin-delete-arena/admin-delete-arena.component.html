@@ -1,1 +1,26 @@
-<p>admin-delete-arena works!</p>
+<div style="display: grid; justify-content: space-evenly">
+
+    <div class="arena-form">
+  
+      <label>Choose the Arena You Want to delete</label>
+  
+      <div class="normal-input">
+        <label>Arena</label>
+        <select #ar ng [(ngModel)]="selectedar" class="option-list" name="ab4">
+          <option  *ngFor="let ar of Arenas" [ngValue]="ar" >{{ar.name}}</option>
+        </select>
+      </div>
+  
+      <button
+        class="bn29"
+        (click)="deleteChar()"
+      >
+        Delete Arena</button>
+    </div>
+    <div *ngIf="Arenas && ar" class="img">
+      <div class="text">Your Arena Preview</div>
+      <img style="height: 40vh" src="{{Arenas[ar.selectedIndex].arenaImg}}"/>
+    </div>
+  
+  </div>
+  

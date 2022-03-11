@@ -31,6 +31,7 @@ export class AdminDeleteCharacterComponent implements OnInit {
 
   deleteChar(){
     console.log(this.selectedChar)
+    this.characterService.deleteCharacter((this.selectedChar as any).id).subscribe()
   }
 
 }
