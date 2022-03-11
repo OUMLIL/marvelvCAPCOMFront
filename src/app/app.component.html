@@ -31,7 +31,24 @@
       />
     </a>
 
-    <a aria-label="Go to admin" title="Go to admin" routerLink="/adminPanel">
+    <div
+      *ngIf="hasRoute('/admin-add-character') ||
+      hasRoute('/admin-add-arena') ||
+      hasRoute('/admin-add-ab') ||
+      hasRoute('/admin-delete-character') ||
+      hasRoute('/admin-delete-arena') ||
+      hasRoute('/admin-delete-ab')"
+    >
+      <a style="color: #674603;" routerLink="/admin-add-character">Add Character ~ ~ </a>
+      <a style="color: #674603;" routerLink="/admin-add-arena">Add Arena ~ ~ </a>
+      <a style="color: #674603;" routerLink="/admin-add-ab">Add Ability ~ ~ </a>
+      <a style="color: #674603;" routerLink="/admin-delete-character">Delete Character ~ ~ </a>
+      <a style="color: #674603;" routerLink="/admin-delete-arena">Delete Arena ~ ~ </a>
+      <a style="color: #674603;" routerLink="/admin-delete-ab">Delete Ability </a>
+      </div>
+
+
+    <a aria-label="Go to admin" title="Go to admin" routerLink="/admin-add-character">
       <img
         width="60"
         alt="Go to admin"

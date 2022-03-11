@@ -15,11 +15,14 @@ import { PlayerService } from './services/player.service';
 import { CharacterService } from './services/character.service';
 import { AbilityService } from './services/ability.service';
 import { SharedDataServiceService } from './services/shared-data-service.service';
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminPanelComponent } from './components/admin-add-character/admin-panel.component';
 import {FormsModule} from "@angular/forms";
 import { GameEndComponent } from './components/game-end/game-end.component';
 import { AdminAddArenaComponent } from './components/admin-add-arena/admin-add-arena.component';
 import { AdminAddAbComponent } from './components/admin-add-ab/admin-add-ab.component';
+import { AdminDeleteAbComponent } from './components/admin-delete-ab/admin-delete-ab.component';
+import { AdminDeleteArenaComponent } from './components/admin-delete-arena/admin-delete-arena.component';
+import { AdminDeleteCharacterComponent } from './components/admin-delete-character/admin-delete-character.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,10 @@ import { AdminAddAbComponent } from './components/admin-add-ab/admin-add-ab.comp
     AdminPanelComponent,
     GameEndComponent,
     AdminAddArenaComponent,
-    AdminAddAbComponent
+    AdminAddAbComponent,
+    AdminDeleteAbComponent,
+    AdminDeleteArenaComponent,
+    AdminDeleteCharacterComponent
   ],
     imports: [
         BrowserModule,

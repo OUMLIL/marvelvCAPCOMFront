@@ -534,3 +534,6 @@ h5 {
   );
 }
 
+.option-list:not(.highlight-option-list):hover{
+  cursor: pointer;
+}

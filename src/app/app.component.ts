@@ -23,4 +23,8 @@ export class AppComponent {
   hasRoute(route: string) {
     return this.router.url === route;
   }
+
+  changeRoute(){
+
+  }
 }
