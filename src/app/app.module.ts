@@ -18,6 +18,7 @@ import { SharedDataServiceService } from './services/shared-data-service.service
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {FormsModule} from "@angular/forms";
 import { GameEndComponent } from './game-end/game-end.component';
+import { AdminAddArenaComponent } from './components/admin-add-arena/admin-add-arena.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { GameEndComponent } from './game-end/game-end.component';
     ArenasComponent,
     GameComponent,
     AdminPanelComponent,
-    GameEndComponent
+    GameEndComponent,
+    AdminAddArenaComponent
   ],
     imports: [
         BrowserModule,
