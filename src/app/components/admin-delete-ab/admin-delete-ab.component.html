@@ -1,1 +1,21 @@
-<p>admin-delete-ab works!</p>
+<div style="display: grid; justify-content: space-evenly">
+
+  <div class="arena-form">
+
+    <label>Choose the Ability You Want to delete</label>
+
+    <div class="normal-input">
+      <label>Ability 4</label>
+      <select [(ngModel)]="selectedAb" class="option-list" name="ab4">
+        <option  *ngFor="let ability of abilities" [ngValue]="ability" >{{ability.abName}}</option>
+      </select>
+    </div>
+
+    <button
+      class="bn29"
+      (click)="deleteAbility()"
+    >
+      Delete Ability</button>
+  </div>
+
+</div>

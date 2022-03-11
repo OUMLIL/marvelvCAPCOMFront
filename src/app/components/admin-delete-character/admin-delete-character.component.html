@@ -1,1 +1,25 @@
-<p>admin-delete-character works!</p>
+<div style="display: grid; justify-content: space-evenly">
+
+  <div class="arena-form">
+
+    <label>Choose the Character You Want to delete</label>
+
+    <div class="normal-input">
+      <label>Character</label>
+      <select #char [(ngModel)]="selectedChar" class="option-list" name="ab4">
+        <option  *ngFor="let character of characters" [ngValue]="character" >{{character.charName}}</option>
+      </select>
+    </div>
+
+    <button
+      class="bn29"
+      (click)="deleteChar()"
+    >
+      Delete Character</button>
+  </div>
+  <div *ngIf="characters && char" class="img">
+    <div class="text">Your Character Preview</div>
+    <img style="height: 40vh" src="https://i.ibb.co/{{characters[char.selectedIndex].side.split(' ', 5)[0]}}.png"/>
+  </div>
+
+</div>
