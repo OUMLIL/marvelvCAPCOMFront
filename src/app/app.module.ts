@@ -17,7 +17,7 @@ import { AbilityService } from './services/ability.service';
 import { SharedDataServiceService } from './services/shared-data-service.service';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {FormsModule} from "@angular/forms";
-import { GameEndComponent } from './game-end/game-end.component';
+import { GameEndComponent } from './components/game-end/game-end.component';
 import { AdminAddArenaComponent } from './components/admin-add-arena/admin-add-arena.component';
 import { AdminAddAbComponent } from './components/admin-add-ab/admin-add-ab.component';
 @NgModule({

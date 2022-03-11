@@ -5,7 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FiguresComponent } from './components/figures/figures.component';
 import { ArenasComponent } from './components/arenas/arenas.component';
 import { GameComponent } from './components/game/game.component';
-import { GameEndComponent } from './game-end/game-end.component';
+import { GameEndComponent } from './components/game-end/game-end.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {AdminAddArenaComponent} from "./components/admin-add-arena/admin-add-arena.component";
 import {AdminAddAbComponent} from "./components/admin-add-ab/admin-add-ab.component";
