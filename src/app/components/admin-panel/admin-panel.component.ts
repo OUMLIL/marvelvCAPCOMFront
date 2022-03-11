@@ -11,9 +11,9 @@ import { CharacterService } from 'src/app/services/character.service';
 })
 export class AdminPanelComponent implements OnInit {
   CharacterName = "NewCharacter";
-  Character : ICharacter = new ICharacter()
 
   abilities : any
+  Character : ICharacter = new ICharacter()
 
   imgFront ='https://i.ibb.co/xhrf1KC/m1.png'
   imgBack ="https://i.ibb.co/WymZxSd/m0.png"
@@ -70,9 +70,11 @@ export class AdminPanelComponent implements OnInit {
     console.log(this.selectedAb4)
     console.log(this.finalUrlIng)
     console.log(this.Hp)
+
     this.Character.CharName = this.CharacterName
     this.Character.Side = this.finalUrlIng
     this.Character.HeathPoints = this.Hp
+
     this.Character.ab1Id = (this.selectedAb1 as any).id
     this.Character.ab2Id = (this.selectedAb2 as any).id
     this.Character.ab3Id = (this.selectedAb3 as any).id

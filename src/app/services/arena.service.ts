@@ -23,6 +23,13 @@ export class ArenaService {
     return this.http.get<IArena>(`${API_URL}/api/Arena/arenas/${id}`)
   }
 
+  addArena(arena : IArena){
+    return this.http.post<IArena>(`${API_URL}/api/Arena/arenas`, arena, this.httpOptions )
+  }
+
+  deleteArena(id : number){
+    return this.http.delete<IArena>(`${API_URL}/api/Arena/arenas/${id}`)
+  }
 
 
 }
