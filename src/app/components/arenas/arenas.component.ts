@@ -47,8 +47,6 @@ export class ArenasComponent implements OnInit {
       this.game = e
     })
 
-    console.log(this.game)
-
     this.createRound()
     this.createGame()
   }
@@ -114,20 +112,18 @@ export class ArenasComponent implements OnInit {
 
   incrementCheck(){
     this.check[this.numberChecked] = false;
-    this.numberChecked = (this.numberChecked + 1)%5;
+    this.numberChecked = (this.numberChecked + 1)%(this.arenas.length);
     this.check[this.numberChecked] = true;
     console.log(this.numberChecked);
   }
   decrementCheck(){
     this.check[this.numberChecked] = false;
     this.numberChecked = this.numberChecked - 1;
-    if (this.numberChecked<0){this.numberChecked= 4}
+    if (this.numberChecked<0){this.numberChecked= (this.arenas.length-1)}
     this.check[this.numberChecked] = true;
     console.log(this.numberChecked);
+    console.log(this.arenas)
   }
 
-  pickArena(){
-    console.log("picked arena ", this.numberChecked);
-  }
 
 }

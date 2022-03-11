@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IArena } from 'src/app/models/iarena.model';
-import {IAbility} from "../../models/iability.model";
-import {AbilityService} from "../../services/ability.service";
 import {ArenaService} from "../../services/arena.service";
 
 @Component({
